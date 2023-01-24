@@ -12,12 +12,26 @@ h1 {
 }
 
 body {
-	background-color: #f7dfff;
+	background-color: #4e2d74;
 	font-family: "Quicksand", sans-serif;
 	color: #140024;
 	line-height: 30px;
 	text-align: center;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	place-items: center;
 }
+
+main {
+	border: 6px solid #d796ff;
+	width: 90%;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+	border-radius: 3rem;
+	background-color: #f7dfff;
+}
+
 h2 {
 	font-size: 3rem;
 }
@@ -34,6 +48,38 @@ h2 {
 
 .quicksandPara {
 	font-size: 1.5rem;
+	padding: 0 3rem;
+}
+
+.upperContainer {
+	width: 100%;
+	display: grid;
+	place-items: center;
+	margin-bottom: 42px;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	width: 1500px;
+}
+
+.colorboxes {
+	width: 100%;
+	display: grid;
+	justify-content: space-evenly;
+	grid-template-columns: repeat(5, 200px);
+}
+
+.colorBoxTitleDiv {
+	display: grid;
+	justify-content: space-evenly;
+	grid-template-columns: repeat(5, 200px);
+}
+
+.colorBoxTitle {
+	text-align: center;
+	width: 198px;
 }
 
 .colorbox {
@@ -41,6 +87,7 @@ h2 {
 	height: 200px;
 	display: inline-block;
 	text-align: center;
+	border-radius: 2rem;
 }
 
 .mainColor {
@@ -55,6 +102,7 @@ h2 {
 }
 .backgroundColor {
 	background-color: #f7dfff;
+	border: 1px solid #140024;
 }
 .textColor {
 	background-color: #140024;
