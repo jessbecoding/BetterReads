@@ -1,0 +1,62 @@
+/* colors */
+/* #001524
+#15616d
+#ffecd1
+#ff7d00
+#78290f */
+
+h1 {
+	color: #7e49ba;
+	font-family: "DM Serif Text", serif;
+	font-size: 4rem;
+}
+
+body {
+	background-color: #f7dfff;
+	font-family: "Quicksand", sans-serif;
+	color: #140024;
+	line-height: 30px;
+	text-align: center;
+}
+h2 {
+	font-size: 3rem;
+}
+
+.serif {
+	font-family: "DM Serif Text", serif;
+	font-size: 2rem;
+}
+
+.sans-serif {
+	font-family: "Quicksand", sans-serif;
+	font-size: 2rem;
+}
+
+.quicksandPara {
+	font-size: 1.5rem;
+}
+
+.colorbox {
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+	text-align: center;
+}
+
+.mainColor {
+	background-color: #7e49ba;
+}
+.accent1 {
+	background-color: #d796ff;
+}
+.accent2 {
+	background-color: #4e2d74;
+	color: #f7dfff;
+}
+.backgroundColor {
+	background-color: #f7dfff;
+}
+.textColor {
+	background-color: #140024;
+	color: #f7dfff;
+}
