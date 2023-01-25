@@ -17,11 +17,7 @@ app.use("/reader", readerRoutes);
 // MIDDLEWARE //
 
 app.get("/", (req, res) => {
-	res.render("pages/index");
-});
-
-app.get("/login", (req, res) => {
-	res.render("pages/login");
+  res.render("pages/index");
 });
 
 app.listen(PORT, console.log(`Listening on port ${PORT}`));
