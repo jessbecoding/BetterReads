@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "authorId",
         onDelete: "CASCADE",
       });
-      Events.belongsToMany(Readers, {
+      Events.belongsToMany(models.Readers, {
         through: "Reader_Events",
       });
     }
