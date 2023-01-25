@@ -17,9 +17,13 @@ router.post("/create_reader", (req, res) => {
   });
 });
 
+router.get("/account", (req, res) => {
+  res.send(`Successful login, here is your account page, ${reader.firstName}`);
+});
+
 router.post("/login_reader", async (req, res) => {
   const { email, password } = req.body;
-  const author = await Reader.findOne({
+  const reader = await Reader.findOne({
     where: {
       email: email,
     },
@@ -33,7 +37,9 @@ router.post("/login_reader", async (req, res) => {
       res.status(401).send("Your password does not match.");
       return;
     }
-    res.status(200).send("Email and Password Match");
+    res.status(200);
+    res.redirect("/account");
+    return;
   });
 });
 
