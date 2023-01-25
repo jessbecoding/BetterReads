@@ -12,28 +12,16 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert("Authors", [
+    await queryInterface.bulkInsert("Reader_Events", [
       {
-        email: "email1@email.com",
-        password: "password",
-        firstName: "Piper",
-        lastName: "CJ",
+        readerID: 1,
+        eventID: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        email: "email2@email.com",
-        password: "password",
-        firstName: "Jeanette",
-        lastName: "McCardy",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        email: "email3@email.com",
-        password: "password",
-        firstName: "Imaginary",
-        lastName: "Friend",
+        readerID: 2,
+        eventID: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
