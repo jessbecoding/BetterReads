@@ -15,7 +15,7 @@ app.use("/author", authorRoutes);
 app.use("/reader", readerRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Landing Page");
+	res.render("pages/index");
 });
 
 app.listen(PORT, console.log(`Listening on port ${PORT}`));
