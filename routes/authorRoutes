@@ -44,6 +44,7 @@ router.post("/login_author", async (req, res) => {
     res.redirect("/account");
     return;
   });
+  res.render("pages/login");
 });
 
 module.exports = router;
