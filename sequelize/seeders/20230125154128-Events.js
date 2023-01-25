@@ -12,28 +12,15 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert("Authors", [
+    await queryInterface.bulkInsert("Events", [
       {
-        email: "email1@email.com",
-        password: "password",
-        firstName: "Piper",
-        lastName: "CJ",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        email: "email2@email.com",
-        password: "password",
-        firstName: "Jeanette",
-        lastName: "McCardy",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        email: "email3@email.com",
-        password: "password",
-        firstName: "Imaginary",
-        lastName: "Friend",
+        eventTitle: "Piper CJ Book Signing",
+        date: "2023-02-08",
+        location: "Phoenix, Arizona",
+        time: "4:00 PM",
+        isFree: true,
+        authorId: 1,
+        description: "thing that needs stuff",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
