@@ -17,14 +17,17 @@
 			</h1>
 			<div class="flex flex-col px-3 h-3/4 justify-center items-center mt-4">
 				<form
-					action="/login"
+					action="/login_author"
+					method="post"
 					class="flex justify-center flex-col gap-3 items-center">
 					<input
 						type="text"
+						name="email"
 						placeholder="email"
 						class="h-10 text-center rounded-full text-lg" />
 					<input
 						type="password"
+						name="password"
 						placeholder="password"
 						class="h-10 text-center rounded-full text-lg" />
 					<input
