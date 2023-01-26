@@ -10,6 +10,8 @@ body {
 	background-color: #f7dfff;
 	min-height: 100%;
 	color: #140024;
+	display: flex;
+	flex-direction: column;
 }
 
 .menu-wrap {
