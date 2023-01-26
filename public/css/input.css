@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+	height: 100%;
+}
+
+body {
+	background-color: #f7dfff;
+	min-height: 100%;
+	color: #140024;
+}
+
 .menu-wrap {
 	position: fixed;
 	/* we want it to always be at the top */
@@ -146,4 +156,16 @@
 
 .menu-wrap .menu > div > div > ul > li > a:hover {
 	color: #d796ff;
+}
+
+.background {
+	/* background-image: url("/public/assets/mobileTopBanner.png"); */
+	background-image: url("../assets/mobileTopBanner.png");
+	background-size: cover;
+}
+
+.backgroundDesk {
+	/* background-image: url("/public/assets/desktopTopBanner2.png"); */
+	background-image: url("../assets/desktopTopBanner2.png");
+	background-size: cover;
 }
