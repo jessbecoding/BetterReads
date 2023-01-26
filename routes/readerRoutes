@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const { Readers } = require("../sequelize/models/readers");
 
 router.post("/create_reader", (req, res) => {
   const { email, password, firstName, lastName, funFact } = req.body;
