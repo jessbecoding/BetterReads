@@ -4,10 +4,12 @@ const PORT = 3027;
 const authRoutes = require("./routes/authRoutes");
 const authorRoutes = require("./routes/authorRoutes");
 const readerRoutes = require("./routes/readerRoutes");
+const path = require("path");
 
 // MIDDLEWARE //
 app.use(express.json());
 
+app.set("views", path.join(__dirname, "views"));
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 
@@ -17,7 +19,11 @@ app.use("/reader", readerRoutes);
 // MIDDLEWARE //
 
 app.get("/", (req, res) => {
-  res.render("pages/index");
+	res.render("pages/index");
+});
+
+app.get("/login", (req, res) => {
+	res.render("pages/login");
 });
 
 app.listen(PORT, console.log(`Listening on port ${PORT}`));

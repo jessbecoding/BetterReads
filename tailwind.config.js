@@ -21,9 +21,6 @@ module.exports = {
 			dm: ["DM Serif Text", "sans"],
 			quick: ["Quicksand", "sans-serif"],
 		},
-		backgroundImage: {
-			heroPatternMobile: "url('../assets/mobileTopBanner.png')",
-		},
 	},
 	plugins: [],
 };
