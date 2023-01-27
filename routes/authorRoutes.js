@@ -63,7 +63,7 @@ router.post("/createEvent", async (req, res) => {
     time: time,
     isFree: isFree,
     description: description,
-    authorId: authorId,
+    authorId: author.id,
   });
   res.send(event);
 });
