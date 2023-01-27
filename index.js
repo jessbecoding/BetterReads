@@ -8,6 +8,13 @@ const path = require("path");
 
 // MIDDLEWARE //
 app.use(express.json());
+const bodyParser = require("body-parser");
+
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(__dirname + "/public"));
@@ -19,11 +26,11 @@ app.use("/reader", readerRoutes);
 // MIDDLEWARE //
 
 app.get("/", (req, res) => {
-	res.render("pages/index");
+  res.render("pages/index");
 });
 
 app.get("/login", (req, res) => {
-	res.render("pages/login");
+  res.render("pages/login");
 });
 
 app.listen(PORT, console.log(`Listening on port ${PORT}`));
