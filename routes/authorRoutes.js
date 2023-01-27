@@ -53,10 +53,37 @@ router.post("/login_author", async (req, res) => {
   }
 });
 
+router.get("/viewEvents", async (req, res) => {
+  const { email } = req.body;
+  const author = await Authors.findOne({
+    where: {
+      email: email,
+    },
+  });
+  const allEvents = await Events.findAll({
+    where: {
+      authorId: author.id,
+    },
+  });
+  res.render("pages/authorEvents", {
+    eventTitle: eventTitle,
+    date: date,
+    location: location,
+    time: time,
+    isFree: isFree,
+    description: description,
+  });
+});
+
 router.post("/createEvent", async (req, res) => {
-  const { eventTitle, date, location, time, isFree, description, authorId } =
+  const { eventTitle, date, location, time, isFree, description, email } =
     req.body;
-  const author = Authors.getUser();
+  const author = await Authors.findOne({
+    where: {
+      email: email,
+    },
+  });
+  console.log(author);
   const event = await Events.create({
     eventTitle: eventTitle,
     date: date,
@@ -66,7 +93,7 @@ router.post("/createEvent", async (req, res) => {
     description: description,
     authorId: author.id,
   });
-  res.send(event);
+  res.render("pages/authorEvents");
 });
 
 module.exports = router;
