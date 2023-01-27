@@ -614,14 +614,6 @@ video {
   height: 180px;
 }
 
-.h-64 {
-  height: 16rem;
-}
-
-.h-3\/4 {
-  height: 75%;
-}
-
 .h-10 {
   height: 2.5rem;
 }
@@ -684,6 +676,10 @@ video {
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .gap-3 {
@@ -1087,6 +1083,10 @@ body {
     margin-top: 1.25rem;
   }
 
+  .md\:mt-0 {
+    margin-top: 0px;
+  }
+
   .md\:block {
     display: block;
   }
@@ -1105,6 +1105,10 @@ body {
 
   .md\:h-48 {
     height: 12rem;
+  }
+
+  .md\:h-\[300px\] {
+    height: 300px;
   }
 
   .md\:h-\[400px\] {
