@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const { Authors } = require("../sequelize/models");
-
-const bodyParser = require("body-parser");
 
 router.use(
   bodyParser.urlencoded({
@@ -14,7 +13,6 @@ router.use(
 );
 
 router.use(bodyParser.json());
-
 router.use(cookieParser());
 
 router.get("/authorDash", (req, res) => {
@@ -43,24 +41,15 @@ router.post("/login_author", async (req, res) => {
     where: {
       email: email,
     },
-    // if (!author) res.status(400).send("User not found.");
-    // return;
   });
-  bcrypt.compare(password, author.password, (err, result) => {
-    if (err) {
-      res.send(err);
-      return;
-    }
-    if (!result) {
-      res.status(401).send("Your email or password does not match.");
-      return;
-    }
-    req.session.author = author.dataValues;
-    res.status(200);
-    res.redirect("pages/authorDash");
-    return;
-  });
-  res.render("pages/login");
+  const validPassword = await bcrypt.compare(password, author.password);
+  if (validPassword) {
+    res.render("pages/authorDash", { author: author });
+  } else {
+    res
+      .status(403)
+      .send("That is not a valid user. Please check email and password.");
+  }
 });
 
 module.exports = router;

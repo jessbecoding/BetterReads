@@ -39,25 +39,19 @@ router.get("/account", (req, res) => {
 
 router.post("/login_reader", async (req, res) => {
   const { email, password } = req.body;
-  const reader = await Reader.findOne({
+  const reader = await Readers.findOne({
     where: {
       email: email,
     },
   });
-  bcrypt.compare(password, reader.password, (err, result) => {
-    if (err) {
-      res.send(err);
-      return;
-    }
-    if (!result) {
-      res.status(401).send("Your password does not match.");
-      return;
-    }
-    res.status(200);
-    res.redirect("/account");
-    return;
-  });
-  res.render("pages/login");
+  const validPassword = await bcrypt.compare(password, reader.password);
+  if (validPassword) {
+    res.render("pages/readerDash", { reader: reader });
+  } else {
+    res
+      .status(403)
+      .send("That is not a valid user. Please check email and password.");
+  }
 });
 
 module.exports = router;
