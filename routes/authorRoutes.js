@@ -56,6 +56,7 @@ router.post("/login_author", async (req, res) => {
 router.post("/createEvent", async (req, res) => {
   const { eventTitle, date, location, time, isFree, description, authorId } =
     req.body;
+  const author = Authors.getUser();
   const event = await Events.create({
     eventTitle: eventTitle,
     date: date,
