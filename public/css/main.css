@@ -1119,6 +1119,10 @@ body {
     width: 80%;
   }
 
+  .md\:w-1\/2 {
+    width: 50%;
+  }
+
   .md\:w-full {
     width: 100%;
   }
@@ -1131,16 +1135,16 @@ body {
     width: 75%;
   }
 
-  .md\:w-1\/2 {
-    width: 50%;
-  }
-
   .md\:w-48 {
     width: 12rem;
   }
 
   .md\:flex-row {
     flex-direction: row;
+  }
+
+  .md\:justify-start {
+    justify-content: flex-start;
   }
 
   .md\:justify-around {
