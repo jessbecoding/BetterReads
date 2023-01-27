@@ -1,7 +1,23 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
+const { Authors } = require("../sequelize/models");
 
-router.get("/account", (req, res) => {
+const bodyParser = require("body-parser");
+
+router.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+
+router.use(bodyParser.json());
+
+router.use(cookieParser());
+
+router.get("/authorDash", (req, res) => {
   res.send(`Successful login, here is your account page, ${author.firstName}`);
 });
 
@@ -41,9 +57,10 @@ router.post("/login_author", async (req, res) => {
     }
     req.session.author = author.dataValues;
     res.status(200);
-    res.redirect("/account");
+    res.redirect("pages/authorDash");
     return;
   });
+  res.render("pages/login");
 });
 
 module.exports = router;

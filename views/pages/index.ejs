@@ -5,10 +5,48 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>BetterReads</title>
-		<link rel="stylesheet" href="/css/main.css" />
+		<%- include('../partials/head'); %>
 	</head>
 	<body>
-		<nav class="relative container mx-auto bg-indigo underline">Hello</nav>
-		<h1 class="text-3xl underline">Welcome to BetterReads!</h1>
+		<%- include('../partials/navbar'); %>
+		<main class="flex flex-col grow">
+			<section class="relative md:h-96">
+				<div class="w-full h-full">
+					<div class="w-full h-[278px] background md:hidden"></div>
+					<div class="w-screen h-full backgroundDesk hidden md:block"></div>
+					<div
+						class="absolute top-0 left-0 flex w-screen h-[278px] md:h-full flex flex-col justify-center items-center px-5">
+						<h1
+							class="text-backgroundPurple font-dm text-4xl text-center leading-loosest md:text-7xl">
+							Find your new favorite author today
+						</h1>
+						<button
+							class="w-48 py-1.5 shadow-2xl shadow-textPurple font-dm mt-4 text-3xl rounded-full text-accentPurple2 bg-backgroundPurple md:text-5xl md:w-64 md:py-3 md:mt-10">
+							<a href="#">Sign Up</a>
+						</button>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<div class="container mt-10 text-center">
+					<h2 class="font-dm text-textPurple text-2xl">
+						Why choose <span class="text-mainPurple">BetterReads</span>?
+					</h2>
+					<p class="px-6">
+						Whether you're a newly published author looking to expand their
+						readership, or a reader looking for their next adventure,
+						BetterReads is the site for you.
+					</p>
+				</div>
+				<div class="container flex flex-col">
+					<div>
+						<span></span>
+						<p></p>
+					</div>
+				</div>
+			</section>
+		</main>
+		<%- include('../partials/footer'); %>
 	</body>
 </html>

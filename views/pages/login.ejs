@@ -6,9 +6,49 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Login</title>
 		<%- include('../partials/head'); %>
-		<link rel="stylesheet" href="/public/css/login.css" />
 	</head>
 	<body>
-		Login to your BetterReads Account
+		<%- include('../partials/navbar'); %>
+		<main class="h-64 flex flex-col grow justify-center items-center">
+			<h1 class="text-2xl md:text-3xl pl-3 font-quick text-center">
+				Login to your
+				<span class="text-mainPurple font-dm font-bold">BetterReads</span>
+				account
+			</h1>
+			<div class="flex flex-col px-3 h-3/4 justify-center items-center mt-4">
+				<form
+					action="/author/login_author"
+					method="post"
+					class="flex justify-center flex-col gap-3 items-center">
+					<input
+						type="text"
+						name="email"
+						placeholder="email"
+						class="h-10 text-center rounded-full text-lg" />
+					<input
+						type="password"
+						name="password"
+						placeholder="password"
+						class="h-10 text-center rounded-full text-lg" />
+					<input
+						type="submit"
+						name="submit"
+						value="Login"
+						class="block text-lg bg-accentPurple2 text-backgroundPurple w-36 rounded-full cursor-pointer shadow-2xl shadow-textPurple" />
+					<p class="text-sm text-quick">
+						Don't have an account?
+						<a href="#" class="hover:text-mainPurple">Sign up here!</a>
+					</p>
+				</form>
+			</div>
+			<div class="w-3/4 flex justify-center mt-10 md:w-1/2">
+				<img src="/assets/bookshelf.png" alt="" class="w-3/4 md:hidden" />
+				<img
+					src="/assets/desktopBookshelf.png"
+					alt=""
+					class="w-3/4 hidden md:block" />
+			</div>
+		</main>
+		<%- include('../partials/footer'); %>
 	</body>
 </html>
