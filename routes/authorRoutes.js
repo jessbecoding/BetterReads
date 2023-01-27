@@ -66,25 +66,27 @@ router.post("/dash", async (req, res) => {
   });
 });
 
-router.get("/viewEvents", async (req, res) => {
-  const { email } = req.body;
-  const author = await Authors.findOne({
-    where: {
-      email: email,
-    },
-  });
-  const allEvents = await Events.findAll({
-    where: {
-      authorId: author.id,
-    },
-  });
+// router.get("/viewEvents", async (req, res) => {
+// 	const { email } = req.body;
+// 	console.log(email);
+// 	const author = await Authors.findOne({
+// 		where: {
+// 			email: email,
+// 		},
+// 	});
+// 	const allEvents = await Events.findAll({
+// 		// where: {
+// 		// 	authorId: author.id,
+// 		// },
+// 	});
+// 	res.render("pages/authorEvents", {
+// 		allEvents: allEvents,
+// 	});
+// });
+router.get("/events", async (req, res) => {
+  const allEvents = await Events.findAll();
   res.render("pages/authorEvents", {
-    eventTitle: eventTitle,
-    date: date,
-    location: location,
-    time: time,
-    isFree: isFree,
-    description: description,
+    allEvents: allEvents,
   });
 });
 

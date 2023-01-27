@@ -37,10 +37,6 @@ app.get("/signup", (req, res) => {
 	res.render("pages/signup");
 });
 
-app.get("/authorEvents", (req, res) => {
-	res.render("pages/authorEvents");
-});
-
 app.get("/about", (req, res) => {
 	res.render("pages/about");
 });
