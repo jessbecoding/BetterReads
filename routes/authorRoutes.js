@@ -31,7 +31,7 @@ router.post("/create_author", (req, res) => {
       createdAt: new Date(),
       updatedAt: new Date(),
     });
-    res.send(author);
+    res.render("pages/authorDash", { author: author });
   });
 });
 

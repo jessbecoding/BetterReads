@@ -29,7 +29,7 @@ router.post("/create_reader", (req, res) => {
       createdAt: new Date(),
       updatedAt: new Date(),
     });
-    res.send(reader);
+    res.render("pages/readerDash", { reader: reader });
   });
 });
 
