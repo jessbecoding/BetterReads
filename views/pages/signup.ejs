@@ -4,11 +4,113 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Sign Up for BetterReads</title>
+		<title>Sign Up</title>
+		<%- include('../partials/head'); %>
 	</head>
 	<body>
 		<%- include('../partials/navbar'); %>
-		<main></main>
+		<main class="flex flex-col grow justify-center items-center">
+			<h1 class="text-2xl md:text-3xl pl-3 font-quick text-center">
+				Sign up for an account
+			</h1>
+			<div
+				class="flex flex-col justify-center items-center mt-3 w-full md:flex-row md:w-3/4 md:h-[400px] md:gap-3 lg:w-1/2">
+				<div
+					class="flex flex-col w-5/6 justify-center items-center mb-10 p-6 bg-accentPurple1 md:w-1/2 md:h-full rounded-lg md:gap-5 md:mb-0">
+					<h2 class="font-dm text-2xl text-textPurple">Author Account</h2>
+					<form
+						action="/author/create_author"
+						method="post"
+						class="flex justify-center flex-col gap-3 items-center"
+						id="signupauthor">
+						<input
+							type="email"
+							name="email"
+							placeholder="email"
+							required
+							class="h-10 text-center rounded-full text-lg" />
+						<input
+							type="password"
+							name="email"
+							placeholder="password"
+							required
+							class="h-10 text-center rounded-full text-lg" />
+						<input
+							type="text"
+							name="firstName"
+							placeholder="first name"
+							class="h-10 text-center rounded-full text-lg"
+							required />
+						<input
+							type="text"
+							name="lastName"
+							placeholder="last name"
+							class="h-10 text-center rounded-full text-lg"
+							required />
+						<input
+							type="textarea"
+							form="signupauthor"
+							name="funFact"
+							placeholder="fun fact"
+							class="text-lg h-10 text-center rounded-full" />
+						<input
+							type="submit"
+							name="submit"
+							value="Sign Up"
+							class="block text-lg bg-accentPurple2 text-backgroundPurple w-36 rounded-full cursor-pointer font-quick md:mt-5" />
+					</form>
+				</div>
+				<div
+					class="flex flex-col w-5/6 justify-center items-center mb-3 p-6 bg-mainPurple md:w-1/2 rounded-lg md:justify-around md:h-full md:mb-0">
+					<h2 class="font-dm text-2xl text-backgroundPurple">Reader Account</h2>
+					<form
+						action="/reader/create_reader"
+						method="post"
+						class="flex justify-center flex-col gap-3 items-center"
+						id="signupreader">
+						<input
+							type="email"
+							name="email"
+							placeholder="email"
+							class="h-10 text-center rounded-full text-lg" />
+						<input
+							type="password"
+							name="password"
+							placeholder="password"
+							required
+							class="h-10 text-center rounded-full text-lg" />
+						<input
+							type="text"
+							name="nickname"
+							placeholder="nickname"
+							required
+							class="h-10 text-center rounded-full text-lg" />
+						<input
+							type="textarea"
+							form="signupreader"
+							name="funFact"
+							placeholder="fun fact"
+							class="text-lg h-10 text-center rounded-full" />
+						<input
+							type="submit"
+							name="submit"
+							value="Sign Up"
+							class="block text-lg bg-accentPurple2 text-backgroundPurple w-36 rounded-full cursor-pointer font-quick md:mt-5" />
+					</form>
+				</div>
+			</div>
+			<p class="text-sm font-quick mt-3">
+				Already have an account?
+				<a href="login.html" class="hover:text-mainPurple">Login here!</a>
+			</p>
+			<div class="w-3/4 flex justify-center mt-10 md:w-1/2 lg:w-1/3">
+				<img src="/assets/bookshelf.png" alt="" class="w-3/4 md:hidden" />
+				<img
+					src="/assets/desktopBookshelf.png"
+					alt=""
+					class="w-3/4 hidden md:block" />
+			</div>
+		</main>
 		<%- include('../partials/footer'); %>
 	</body>
 </html>
