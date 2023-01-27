@@ -20,7 +20,6 @@ module.exports = (sequelize, DataTypes) => {
       password: DataTypes.STRING,
       nickname: DataTypes.STRING,
       funFact: DataTypes.STRING,
-      favAuths: DataTypes.INTEGER,
     },
     {
       sequelize,
