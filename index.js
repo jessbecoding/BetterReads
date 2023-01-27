@@ -11,9 +11,9 @@ app.use(express.json());
 const bodyParser = require("body-parser");
 
 app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
+	bodyParser.urlencoded({
+		extended: true,
+	})
 );
 
 app.set("views", path.join(__dirname, "views"));
@@ -26,15 +26,19 @@ app.use("/reader", readerRoutes);
 // MIDDLEWARE //
 
 app.get("/", (req, res) => {
-  res.render("pages/index");
+	res.render("pages/index");
 });
 
 app.get("/login", (req, res) => {
-  res.render("pages/login");
+	res.render("pages/login");
 });
 
 app.get("/signup", (req, res) => {
-  res.render("pages/signup");
+	res.render("pages/signup");
+});
+
+app.get("/authorEvents", (req, res) => {
+	res.render("pages/authorEvents");
 });
 
 app.listen(PORT, console.log(`Listening on port ${PORT}`));
