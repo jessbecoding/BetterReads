@@ -41,4 +41,8 @@ app.get("/authorEvents", (req, res) => {
 	res.render("pages/authorEvents");
 });
 
+app.get("/about", (req, res) => {
+	res.render("pages/about");
+});
+
 app.listen(PORT, console.log(`Listening on port ${PORT}`));
