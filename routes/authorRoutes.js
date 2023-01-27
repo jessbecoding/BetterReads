@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const { Authors } = require("../sequelize/models");
+const { Events } = require("../sequelize/models");
 
 router.use(
   bodyParser.urlencoded({
@@ -50,6 +51,21 @@ router.post("/login_author", async (req, res) => {
       .status(403)
       .send("That is not a valid user. Please check email and password.");
   }
+});
+
+router.post("/createEvent", async (req, res) => {
+  const { eventTitle, date, location, time, isFree, description, authorId } =
+    req.body;
+  const event = await Events.create({
+    eventTitle: eventTitle,
+    date: date,
+    location: location,
+    time: time,
+    isFree: isFree,
+    description: description,
+    authorId: authorId,
+  });
+  res.send(event);
 });
 
 module.exports = router;
