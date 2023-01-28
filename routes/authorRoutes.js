@@ -26,6 +26,15 @@ router.use(
     },
   })
 );
+const authenticate = (req, res, next) => {
+  if (req.session.user) {
+    next();
+  } else if (req.path == "/login") {
+    next();
+  } else {
+    res.redirect("/login");
+  }
+};
 // MIDDLEWARE
 
 router.post("/create_author", (req, res) => {
@@ -60,24 +69,24 @@ router.post("/login", async (req, res) => {
       res.send("Login Credentials are invalid. Please try again.");
     } else {
       req.session.user = author.dataValues;
-      res.redirect("/dash");
+      res.redirect("/author/dash");
     }
   });
 });
 
-router.get("/dash", (req, res) => {
+router.get("/dash", authenticate, (req, res) => {
   console.log(req.session.user);
   res.render("pages/authorDash");
 });
 
-router.get("/events", async (req, res) => {
+router.get("/events", authenticate, async (req, res) => {
   const allEvents = await Events.findAll();
   res.render("pages/authorEvents", {
     allEvents: allEvents,
   });
 });
 
-router.post("/createEvent", async (req, res) => {
+router.post("/createEvent", authenticate, async (req, res) => {
   const { eventTitle, date, location, time, isFree, description, email } =
     req.body;
   const author = await Authors.findOne({
