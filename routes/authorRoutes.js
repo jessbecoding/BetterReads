@@ -123,4 +123,17 @@ router.get("/books", authenticate, (req, res) => {
 	});
 });
 
+router.get("/updateEvent:id", authenticate, async (req, res) => {
+	console.log(req);
+	// const eventToUpdate = await Events.findOne({
+	// 	where: {
+	// 		id: req.params,
+	// 	},
+	// });
+	res.render("pages/authorUpdateEvent", {
+		user: { firstName: req.session.user.firstName },
+		// eventToUpdate: eventToUpdate,
+	});
+});
+
 module.exports = router;

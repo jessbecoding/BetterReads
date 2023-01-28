@@ -20,6 +20,7 @@
 					class="flex flex-col gap-3 divide-y divide-violet-500 mt-3 md:flex-row md:flex-wrap md:w-full md:divide-y-0">
 					<% authorEvents.forEach((event) => { %>
 					<div class="md:w-80">
+						<h1 class="hidden"><%= event.id %></h1>
 						<h1 class="text-lg font-dm mb-3"><%= event.eventTitle %></h1>
 						<p><span class="font-bold">Date:</span> <%= event.date %></p>
 						<p><span class="font-bold">Time:</span> <%= event.time %></p>
@@ -31,7 +32,7 @@
 							<span class="font-bold">Description:</span> <%= event.description
 							%>
 						</p>
-						<form action="/author/modifyEvent" method="get">
+						<form action="/author/updateEvent:<%= event.id %>" method="get">
 							<input
 								type="submit"
 								name="submit"
