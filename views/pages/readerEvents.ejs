@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BetterReads | Reader Events</title>
+	</head>
+	<body>
+		<%- include('../partials/readerNav'); %>
+		<main class="flex grow flex-col px-3 mt-3 gap-3">
+			<h1 class="text-2xl font-dm">My Events</h1>
+			<p>It looks like you don't have any events!</p>
+			<p>
+				<a
+					href="/reader/searchEvents"
+					class="cursor-pointer hover:text-mainPurple"
+					>Click here to find events by your favorite authors</a
+				>
+			</p>
+		</main>
+		<%- include('../partials/readerFooter'); %>
+	</body>
+</html>
