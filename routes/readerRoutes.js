@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const { Authors } = require("../sequelize/models");
 const { Readers } = require("../sequelize/models");
 const { Events } = require("../sequelize/models");
+const models = require("../sequelize/models");
 
 // MIDDLE WARE
 router.use(
@@ -16,17 +17,17 @@ router.use(
 );
 router.use(bodyParser.json());
 router.use(cookieParser());
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const store = new SequelizeStore({ db: models.sequelize });
 router.use(
   session({
     secret: "secret",
     resave: false,
     saveUninitialized: true,
-    cookie: {
-      secure: false,
-      maxAge: 2592000000,
-    },
+    store: store,
   })
 );
+store.sync();
 const authenticate = (req, res, next) => {
   if (req.session.user) {
     next();
