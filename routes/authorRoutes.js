@@ -136,16 +136,4 @@ router.get("/updateEvent:id", authenticate, async (req, res) => {
 	});
 });
 
-// router.get("/events", authenticate, async (req, res) => {
-// 	const authorEvents = await Events.findAll({
-// 		where: {
-// 			authorId: req.session.user.id,
-// 		},
-// 	});
-// 	res.render("pages/authorEvents", {
-// 		user: { firstName: req.session.user.firstName },
-// 		authorEvents: authorEvents,
-// 	});
-// });
-
 module.exports = router;
