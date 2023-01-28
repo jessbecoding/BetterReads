@@ -75,7 +75,6 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/dash", authenticate, (req, res) => {
-  console.log(req.session.user);
   res.render("pages/authorDash");
 });
 
@@ -87,27 +86,20 @@ router.get("/events", authenticate, async (req, res) => {
 });
 
 router.post("/createEvent", authenticate, async (req, res) => {
-  const { eventTitle, date, location, time, isFree, description, email } =
-    req.body;
-  const author = await Authors.findOne({
-    where: {
-      email: email,
-    },
-  });
-  console.log(author);
-  const event = await Events.create({
+  const { eventTitle, date, location, time, isFree, description } = req.body;
+  const newEvent = await Events.create({
     eventTitle: eventTitle,
     date: date,
     location: location,
     time: time,
     isFree: isFree,
     description: description,
-    authorId: author.id,
+    authorId: req.session.user.id,
   });
   res.render("pages/authorEvents");
 });
 
-router.get("/authorAccount", (req, res) => {
+router.get("/authorAccount", authenticate, (req, res) => {
   res.render("pages/authorAccount");
 });
 
