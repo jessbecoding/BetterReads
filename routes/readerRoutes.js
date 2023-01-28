@@ -8,9 +8,9 @@ const { Readers } = require("../sequelize/models");
 const bodyParser = require("body-parser");
 
 router.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
+	bodyParser.urlencoded({
+		extended: true,
+	})
 );
 
 router.use(bodyParser.json());
@@ -18,40 +18,53 @@ router.use(bodyParser.json());
 router.use(cookieParser());
 
 router.post("/create_reader", (req, res) => {
-  const { email, password, firstName, lastName, funFact } = req.body;
-  bcrypt.hash(password, 10, async (err, hash) => {
-    const reader = await Readers.create({
-      email: email,
-      password: hash,
-      firstName: firstName,
-      lastName: lastName,
-      funFact: funFact,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    });
-    res.render("pages/readerDash", { reader: reader });
-  });
+	const { email, password, firstName, lastName, funFact } = req.body;
+	bcrypt.hash(password, 10, async (err, hash) => {
+		const reader = await Readers.create({
+			email: email,
+			password: hash,
+			firstName: firstName,
+			lastName: lastName,
+			funFact: funFact,
+			createdAt: new Date(),
+			updatedAt: new Date(),
+		});
+		res.render("pages/readerDash", { reader: reader });
+	});
 });
 
 router.get("/account", (req, res) => {
-  res.send(`Successful login, here is your account page, ${reader.firstName}`);
+	// res.send(`Successful login, here is your account page, ${reader.firstName}`);
+	res.render("pages/readerAccount");
 });
 
 router.post("/login_reader", async (req, res) => {
-  const { email, password } = req.body;
-  const reader = await Readers.findOne({
-    where: {
-      email: email,
-    },
-  });
-  const validPassword = await bcrypt.compare(password, reader.password);
-  if (validPassword) {
-    res.render("pages/readerDash", { reader: reader });
-  } else {
-    res
-      .status(403)
-      .send("That is not a valid user. Please check email and password.");
-  }
+	const { email, password } = req.body;
+	const reader = await Readers.findOne({
+		where: {
+			email: email,
+		},
+	});
+	const validPassword = await bcrypt.compare(password, reader.password);
+	if (validPassword) {
+		res.render("pages/readerDash", { reader: reader });
+	} else {
+		res
+			.status(403)
+			.send("That is not a valid user. Please check email and password.");
+	}
+});
+
+router.get("/readerDash", (req, res) => {
+	res.render("pages/readerDash");
+});
+
+router.get("/readerEvents", (req, res) => {
+	res.render("pages/readerEvents");
+});
+
+router.get("/searchEvents", (req, res) => {
+	res.render("pages/readerSearchEvents");
 });
 
 module.exports = router;
