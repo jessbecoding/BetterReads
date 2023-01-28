@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BetterReads | Author Account</title>
+	</head>
+	<body>
+		<%- include('../partials/authorNav'); %>
+		<main class="flex flex-col grow">
+			<h1 class="text-3xl p-3 text-center">author.firstName's account</h1>
+			<div class="flex flex-col mb-5 px-3 gap-1">
+				<p class="md:text-lg">
+					<span class="font-bold pr-3">Email:</span> author.email
+				</p>
+				<p class="md:text-lg">
+					<span class="font-bold pr-3">First Name:</span> author.firstName
+				</p>
+				<p class="md:text-lg">
+					<span class="font-bold pr-3">Last Name:</span> author.lastName
+				</p>
+				<p class="md:text-lg">
+					<span class="font-bold pr-3">Fun Fact:</span> author.funFact
+				</p>
+			</div>
+			<h2 class="text-2xl p-3">Update my account</h2>
+			<div class="flex flex-col w-full gap-5">
+				<form
+					action="/author/update_author"
+					method="update"
+					id="updateAuthor"
+					class="flex flex-col gap-3 px-3 mb-5 md:w-[400px]">
+					<div class="flex justify-between items-center">
+						<label for="authorEmail" class="font-bold pr-3 md:text-lg"
+							>New Email:
+						</label>
+						<input
+							type="email"
+							name="email"
+							id="authorEmail"
+							class="h-10 text-center rounded-full text-lg" />
+					</div>
+					<div class="flex justify-between items-center">
+						<label for="authorFirst" class="font-bold pr-3 md:text-lg"
+							>New First Name:
+						</label>
+						<input
+							type="text"
+							name="firstName"
+							id="authorFirst"
+							class="h-10 text-center rounded-full text-lg"
+							required />
+					</div>
+					<div class="flex justify-between items-center">
+						<label for="authorLast" class="font-bold pr-3 md:text-lg"
+							>New Last Name:
+						</label>
+						<input
+							type="text"
+							name="lastName"
+							id="authorLast"
+							class="h-10 text-center rounded-full text-lg"
+							required />
+					</div>
+					<div class="flex justify-between items-center">
+						<label for="authorFact" class="font-bold pr-3 md:text-lg"
+							>New Fun Fact:
+						</label>
+						<input
+							type="textarea"
+							form="updateAuthor"
+							name="funFact"
+							id="authorFact"
+							class="text-lg h-10 text-center rounded-full" />
+					</div>
+					<input
+						type="submit"
+						name="submit"
+						value="Update Account"
+						class="block text-lg bg-textPurple text-backgroundPurple w-40 rounded-full cursor-pointer font-quick md:mt-5" />
+				</form>
+			</div>
+			<h2 class="text-2xl p-3">Update my password</h2>
+			<div class="flex flex-col w-full gap-5">
+				<form
+					action=""
+					method="update"
+					class="flex flex-col gap-3 px-3 mb-5 md:w-[400px]">
+					<div class="flex justify-between items-center">
+						<label for="authorOldPassword" class="font-bold pr-3 md:text-lg"
+							>Current Password:</label
+						>
+						<input
+							type="password"
+							name="password"
+							id="authorOldPassword"
+							class="h-10 rounded-full text-lg text-center" />
+					</div>
+					<div class="flex justify-between items-center">
+						<label for="authorNewPassword" class="font-bold pr-3 md:text-lg"
+							>New Password:</label
+						>
+						<input
+							type="password"
+							name="password"
+							id="authorNewPassword"
+							class="h-10 rounded-full text-lg text-center" />
+					</div>
+					<input
+						type="submit"
+						name="submit"
+						value="Update Password"
+						class="block text-lg bg-textPurple text-backgroundPurple w-48 rounded-full cursor-pointer font-quick md:mt-5" />
+				</form>
+			</div>
+
+			<div class="p-3">
+				<div class="flex items-center text-2xl">
+					<span class="material-symbols-outlined"> warning </span>
+					<h2 class="text-2xl p-3 font-bold">DANGER ZONE</h2>
+					<span class="material-symbols-outlined"> warning </span>
+				</div>
+				<p>To delete your account, please type your password below.</p>
+				<p class="font-bold">YOU CANNOT UNDO THIS ACTION!</p>
+				<form action="" method="delete" class="my-3 md:w-[400px]">
+					<div class="flex justify-between items-center">
+						<label for="authorDelPassword" class="font-bold pr-3 md:text-lg"
+							>Password:</label
+						>
+						<input
+							type="password"
+							name="password"
+							id="authorDelPassword"
+							class="h-10 rounded-full text-lg text-center" />
+					</div>
+					<input
+						type="submit"
+						name="submit"
+						value="DELETE ACCOUNT"
+						class="block text-lg bg-textPurple text-backgroundPurple w-48 rounded-full cursor-pointer font-quick mt-3 font-bold" />
+				</form>
+			</div>
+		</main>
+		<%- include('../partials/authorFooter'); %>
+	</body>
+</html>
