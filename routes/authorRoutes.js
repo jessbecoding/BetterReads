@@ -5,7 +5,6 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const { Authors } = require("../sequelize/models");
-const { Readers } = require("../sequelize/models");
 const { Events } = require("../sequelize/models");
 const models = require("../sequelize/models");
 
@@ -30,8 +29,6 @@ router.use(
 store.sync();
 const authenticate = (req, res, next) => {
   if (req.session.user) {
-    next();
-  } else if (req.path == "/login") {
     next();
   } else {
     res.redirect("/login");
@@ -74,6 +71,14 @@ router.post("/login", async (req, res) => {
       res.redirect("/author/dash");
     }
   });
+});
+
+router.post("/logout", (req, res) => {
+  if (req.session) {
+    req.session.destroy((err) => {
+      res.redirect("/login");
+    });
+  }
 });
 
 router.get("/dash", authenticate, (req, res) => {
