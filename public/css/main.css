@@ -1177,8 +1177,8 @@ body {
     width: 100%;
   }
 
-  .md\:w-2\/5 {
-    width: 40%;
+  .md\:w-80 {
+    width: 20rem;
   }
 
   .md\:w-64 {
@@ -1223,12 +1223,6 @@ body {
 
   .md\:gap-5 {
     gap: 1.25rem;
-  }
-
-  .md\:divide-x > :not([hidden]) ~ :not([hidden]) {
-    --tw-divide-x-reverse: 0;
-    border-right-width: calc(1px * var(--tw-divide-x-reverse));
-    border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
   }
 
   .md\:divide-y-0 > :not([hidden]) ~ :not([hidden]) {
