@@ -16,11 +16,33 @@
 		<main class="flex grow flex-col px-3">
 			<section class="mt-3">
 				<h1 class="text-2xl font-dm">My Events</h1>
-				<% authorEvents.forEach((event) => { %>
-				<p><%= event.eventTitle %></p>
-				<% }); %>
+				<div
+					class="flex flex-col gap-3 divide-y divide-violet-500 mt-3 md:flex-row md:flex-wrap md:w-full md:divide-y-0">
+					<% authorEvents.forEach((event) => { %>
+					<div class="md:w-80">
+						<h1 class="text-lg font-dm mb-3"><%= event.eventTitle %></h1>
+						<p><span class="font-bold">Date:</span> <%= event.date %></p>
+						<p><span class="font-bold">Time:</span> <%= event.time %></p>
+						<p>
+							<span class="font-bold">Location:</span> <%= event.location %>
+						</p>
+						<p><span class="font-bold">Free:</span> <%= event.isFree %></p>
+						<p>
+							<span class="font-bold">Description:</span> <%= event.description
+							%>
+						</p>
+						<form action="/author/modifyEvent" method="get">
+							<input
+								type="submit"
+								name="submit"
+								value="Update Event"
+								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-base mt-3" />
+						</form>
+					</div>
+					<% }); %>
+				</div>
 			</section>
-			<section class="flex w-full mt-3 flex-col">
+			<section class="flex w-full mt-5 flex-col">
 				<h1 class="text-2xl font-dm mb-1">Create a new event</h1>
 				<div class="flex w-full relative px-3 flex-col items-center">
 					<form
@@ -35,7 +57,7 @@
 								id="eventTitle"
 								name="eventTitle"
 								required
-								class="w-36 rounded-lg text-lg" />
+								class="w-36 rounded-lg text-lg mt-3" />
 						</div>
 						<div class="flex items-center gap-3">
 							<label for="eventDate" class="font-bold">Date:</label>
@@ -104,7 +126,7 @@
 								type="submit"
 								name="submit"
 								value="Create Event"
-								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-1xl" />
+								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-xl" />
 						</div>
 					</form>
 				</div>
