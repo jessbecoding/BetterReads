@@ -10,12 +10,15 @@
 	<body>
 		<%- include('../partials/authorNav'); %>
 		<h1 class="text-3xl font-quick px-3 text-center">
-			<span class="font-dm">Welcome,</span> author.firstName
+			<span class="font-dm">Welcome,</span> <%= user.firstName %>
 		</h1>
 
 		<main class="flex grow flex-col px-3">
 			<section class="mt-3">
 				<h1 class="text-2xl font-dm">My Events</h1>
+				<% authorEvents.forEach((event) => { %>
+				<p><%= event.eventTitle %></p>
+				<% }); %>
 			</section>
 			<section class="flex w-full mt-3 flex-col">
 				<h1 class="text-2xl font-dm mb-1">Create a new event</h1>
