@@ -70,23 +70,6 @@ router.get("/dash", (req, res) => {
   res.render("pages/authorDash");
 });
 
-// router.get("/viewEvents", async (req, res) => {
-// 	const { email } = req.body;
-// 	console.log(email);
-// 	const author = await Authors.findOne({
-// 		where: {
-// 			email: email,
-// 		},
-// 	});
-// 	const allEvents = await Events.findAll({
-// 		// where: {
-// 		// 	authorId: author.id,
-// 		// },
-// 	});
-// 	res.render("pages/authorEvents", {
-// 		allEvents: allEvents,
-// 	});
-// });
 router.get("/events", async (req, res) => {
   const allEvents = await Events.findAll();
   res.render("pages/authorEvents", {
