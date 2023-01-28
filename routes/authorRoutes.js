@@ -123,4 +123,29 @@ router.get("/books", authenticate, (req, res) => {
 	});
 });
 
+router.get("/updateEvent:id", authenticate, async (req, res) => {
+	console.log(req);
+	// const eventToUpdate = await Events.findOne({
+	// 	where: {
+	// 		id: req.params,
+	// 	},
+	// });
+	res.render("pages/authorUpdateEvent", {
+		user: { firstName: req.session.user.firstName },
+		// eventToUpdate: eventToUpdate,
+	});
+});
+
+// router.get("/events", authenticate, async (req, res) => {
+// 	const authorEvents = await Events.findAll({
+// 		where: {
+// 			authorId: req.session.user.id,
+// 		},
+// 	});
+// 	res.render("pages/authorEvents", {
+// 		user: { firstName: req.session.user.firstName },
+// 		authorEvents: authorEvents,
+// 	});
+// });
+
 module.exports = router;
