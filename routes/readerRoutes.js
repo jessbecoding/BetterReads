@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
-const { Authors } = require("../sequelize/models");
 const { Readers } = require("../sequelize/models");
 const { Events } = require("../sequelize/models");
 const models = require("../sequelize/models");
@@ -83,6 +82,18 @@ router.post("/login", async (req, res) => {
 
 router.get("/dash", authenticate, (req, res) => {
   res.render("pages/readerDash");
+});
+
+router.get("/events", authenticate, async (req, res) => {
+  const readerEvents = await Reader_Events.findAll({
+    where: {
+      readerID: req.session.user.id,
+    },
+  });
+  res.render("pages/readerEvents", {
+    user: { firstName: req.session.user.firstName },
+    readerEvents: readerEvents,
+  });
 });
 
 module.exports = router;
