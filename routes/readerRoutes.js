@@ -55,7 +55,8 @@ router.post("/create_reader", (req, res) => {
 });
 
 router.get("/account", (req, res) => {
-  res.send(`Successful login, here is your account page, ${reader.firstName}`);
+  // res.send(`Successful login, here is your account page, ${reader.firstName}`);
+  res.render("pages/readerAccount");
 });
 
 router.post("/login", async (req, res) => {
