@@ -113,7 +113,7 @@ router.post("/createEvent", authenticate, async (req, res) => {
 	res.render("pages/authorEvents");
 });
 
-router.get("/authorAccount", authenticate, (req, res) => {
+router.get("/account", authenticate, (req, res) => {
 	res.render("pages/authorAccount");
 });
 
@@ -123,16 +123,16 @@ router.get("/books", authenticate, (req, res) => {
 	});
 });
 
-router.get("/updateEvent:id", authenticate, async (req, res) => {
-	console.log(req);
-	// const eventToUpdate = await Events.findOne({
-	// 	where: {
-	// 		id: req.params,
-	// 	},
-	// });
+// THIS ROUTE IS DYNAMIC. IT NEEDS TO BE AT THE BOTTOM.
+router.get("/updateEvent/:id", authenticate, async (req, res) => {
+	const eventToUpdate = await Events.findOne({
+		where: {
+			id: req.params.id,
+		},
+	});
 	res.render("pages/authorUpdateEvent", {
 		user: { firstName: req.session.user.firstName },
-		// eventToUpdate: eventToUpdate,
+		eventToUpdate: eventToUpdate,
 	});
 });
 
