@@ -10,6 +10,8 @@
 	<body>
 		<%- include('../partials/authorNav'); %>
 		<main class="flex flex-col grow lg:items-center">
+			<!------------ ACCOUNT INFORMATION ------------>
+
 			<h1 class="text-3xl p-3 text-center font-dm">My Account</h1>
 			<div class="md:flex md:justify-between md:w-full lg:w-3/4">
 				<div>
@@ -29,6 +31,9 @@
 							<span class="font-bold pr-3">Fun Fact:</span> <%= user.funFact %>
 						</p>
 					</div>
+
+					<!------------UPDATE ACCOUNT INFORMATION------------>
+
 					<h2 class="text-2xl p-3">Update my account</h2>
 					<div class="flex flex-col w-full gap-5">
 						<form
@@ -36,6 +41,7 @@
 							method="post"
 							id="updateAuthor"
 							class="flex flex-col gap-3 px-3 mb-5 md:w-[400px]">
+							<!------- NEW EMAIL ------->
 							<div class="flex justify-between items-center">
 								<label for="authorEmail" class="font-bold pr-3 md:text-lg"
 									>New Email:
@@ -47,6 +53,7 @@
 									value="<%= user.email %>"
 									class="h-10 text-center rounded-full text-lg" />
 							</div>
+							<!------- NEW FIRST NAME ------->
 							<div class="flex justify-between items-center">
 								<label for="authorFirst" class="font-bold pr-3 md:text-lg"
 									>New First Name:
@@ -58,6 +65,7 @@
 									value="<%= user.firstName %>"
 									class="h-10 text-center rounded-full text-lg" />
 							</div>
+							<!------- NEW LAST NAME ------->
 							<div class="flex justify-between items-center">
 								<label for="authorLast" class="font-bold pr-3 md:text-lg"
 									>New Last Name:
@@ -69,6 +77,7 @@
 									value="<%= user.lastName %>"
 									class="h-10 text-center rounded-full text-lg" />
 							</div>
+							<!------- NEW FUN FACT ------->
 							<div class="flex justify-between items-center">
 								<label for="authorFact" class="font-bold pr-3 md:text-lg"
 									>New Fun Fact:
@@ -82,6 +91,7 @@
 <%= user.funFact %></textarea
 								>
 							</div>
+							<!------- INPUT SUBMIT ------->
 							<input
 								type="submit"
 								name="submit"
@@ -89,13 +99,17 @@
 								class="block text-lg bg-textPurple text-backgroundPurple w-40 rounded-full cursor-pointer font-quick md:mt-5" />
 						</form>
 					</div>
+
+					<!------------ UPDATE PASSWORD ------------>
+
 					<h2 class="text-2xl p-3">Update my password</h2>
 					<div class="flex flex-col w-full gap-5">
 						<form
-							action=""
-							method="update"
+							action="/author/updatePassword"
+							method="post"
 							class="flex flex-col gap-3 px-3 mb-5 md:w-[400px]">
 							<div class="flex justify-between items-center">
+								<!------- CURRENT PASSWORD ------->
 								<label for="authorOldPassword" class="font-bold pr-3 md:text-lg"
 									>Current Password:</label
 								>
@@ -105,16 +119,18 @@
 									id="authorOldPassword"
 									class="h-10 rounded-full text-lg text-center" />
 							</div>
+							<!------- NEW PASSWORD ------->
 							<div class="flex justify-between items-center">
 								<label for="authorNewPassword" class="font-bold pr-3 md:text-lg"
 									>New Password:</label
 								>
 								<input
 									type="password"
-									name="password"
+									name="newPassword"
 									id="authorNewPassword"
 									class="h-10 rounded-full text-lg text-center" />
 							</div>
+							<!------- INPUT SUBMIT ------->
 							<input
 								type="submit"
 								name="submit"
@@ -122,6 +138,8 @@
 								class="block text-lg bg-textPurple text-backgroundPurple w-48 rounded-full cursor-pointer font-quick md:mt-5" />
 						</form>
 					</div>
+
+					<!------------ DELETE ACCOUNT ------------>
 
 					<div class="p-3">
 						<div class="flex items-center text-2xl">
@@ -132,6 +150,7 @@
 						<p>To delete your account, please type your password below.</p>
 						<p class="font-bold">YOU CANNOT UNDO THIS ACTION!</p>
 						<form action="" method="delete" class="my-3 md:w-[400px]">
+							<!------- INPUT PASSWORD ------->
 							<div class="flex justify-between items-center">
 								<label for="authorDelPassword" class="font-bold pr-3 md:text-lg"
 									>Password:</label
@@ -142,6 +161,7 @@
 									id="authorDelPassword"
 									class="h-10 rounded-full text-lg text-center" />
 							</div>
+							<!------- INPUT SUBMIT ------->
 							<input
 								type="submit"
 								name="submit"

@@ -49,7 +49,8 @@ router.post("/create_author", (req, res) => {
 			createdAt: new Date(),
 			updatedAt: new Date(),
 		});
-		res.render("pages/authorDash", { author: author });
+		req.session.user = author.dataValues;
+		res.render("pages/authorDash", { user: req.session.user });
 	});
 });
 
@@ -155,7 +156,7 @@ router.post("/updateAuthor", authenticate, async (req, res) => {
 			},
 		}
 	);
-	res.render("pages/authorAccount", {
+	res.render("pages/updateSuccessful", {
 		user: {
 			email: req.session.user.email,
 			firstName: req.session.user.firstName,
@@ -163,6 +164,43 @@ router.post("/updateAuthor", authenticate, async (req, res) => {
 			funFact: req.session.user.funFact,
 			id: req.session.user.id,
 		},
+	});
+});
+
+router.post("/updatePassword", async (req, res) => {
+	const { password, newPassword } = req.body;
+
+	const author = await Authors.findOne({
+		where: {
+			id: req.session.user.id,
+		},
+	});
+
+	bcrypt.compare(password, author.password, async (err, result) => {
+		if (err) {
+			res.send(err);
+			return;
+		}
+		if (!result) {
+			res.render("pages/loginError");
+		} else {
+			bcrypt.hash(newPassword, 10, async (err, hash) => {
+				await Authors.update(
+					{
+						password: hash,
+						updatedAt: new Date(),
+					},
+					{
+						where: {
+							id: req.session.user.id,
+						},
+					}
+				);
+			});
+
+			req.session.user = author.dataValues;
+			res.render("pages/updateSuccessful");
+		}
 	});
 });
 
