@@ -43,7 +43,7 @@
 								type="submit"
 								name="submit"
 								value="Update Event"
-								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-base mt-3 mb-3" />
+								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-base mt-3 mb-3 cursor-pointer" />
 						</form>
 					</div>
 					<% }); %>
@@ -68,27 +68,29 @@
 								id="eventTitle"
 								name="eventTitle"
 								required
-								class="w-36 rounded-lg text-lg mt-3" />
+								class="w-40 rounded-lg px-2 text-lg mt-3" />
 						</div>
 						<!------- DATE ------->
 						<div class="flex items-center gap-3">
 							<label for="eventDate" class="font-bold">Date:</label>
 							<input
-								type="date"
+								type="text"
 								id="eventDate"
 								name="date"
+								placeholder="MM/DD/YYYY"
 								required
-								class="w-40 rounded-lg px-1 text-lg" />
+								class="w-40 rounded-lg px-2 text-lg" />
 						</div>
 						<!------- TIME ------->
 						<div class="flex items-center gap-3">
 							<label for="eventTime" class="font-bold">Time:</label>
 							<input
-								type="time"
+								type="text"
 								id="eventTime"
 								name="time"
+								placeholder="5:00 PM, EST"
 								required
-								class="w-36 rounded-lg px-1 text-lg" />
+								class="w-36 rounded-lg px-2 text-lg" />
 						</div>
 						<!------- LOCATION ------->
 						<div class="flex items-center gap-3">
@@ -97,32 +99,20 @@
 								type="text"
 								id="eventLocation"
 								name="location"
+								placeholder="Zoom"
 								required
-								class="w-40 rounded-lg px-1 text-lg" />
+								class="w-40 rounded-lg px-2 text-lg" />
 						</div>
 						<!------- PRICE ------->
-						<div>
-							<label for="eventPrice" class="font-bold"
-								>Does this event cost money?</label
-							>
-							<div id="eventPrice" class="flex gap-5">
-								<div class="flex gap-1 items-center">
-									<label for="eventNotFree">Yes</label>
-									<input
-										type="radio"
-										id="eventNotFree"
-										name="isFree"
-										value="false" />
-								</div>
-								<div class="flex gap-1 items-center">
-									<label for="eventFree">No</label>
-									<input
-										type="radio"
-										id="eventFree"
-										name="isFree"
-										value="true" />
-								</div>
-							</div>
+						<div class="flex items-center gap-3">
+							<label for="eventPrice" class="font-bold">Price:</label>
+							<input
+								type="text"
+								id="eventPrice"
+								name="price"
+								placeholder="'free', '$10', etc."
+								required
+								class="w-40 rounded-lg px-2 text-lg" />
 						</div>
 						<!------- DESCRIPTION ------->
 						<div class="flex gap-3 flex-col">
@@ -135,7 +125,7 @@
 								required
 								cols="20"
 								rows="5"
-								class="md:w-1/2 lg:w-1/4"></textarea>
+								class="md:w-1/2 lg:w-1/4 rounded-lg px-2"></textarea>
 						</div>
 						<!------- INPUT SUBMIT ------->
 						<div class="flex justify-start">
@@ -143,7 +133,7 @@
 								type="submit"
 								name="submit"
 								value="Create Event"
-								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-xl" />
+								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-xl cursor-pointer" />
 						</div>
 					</form>
 				</div>
