@@ -5,92 +5,151 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const { Readers } = require("../sequelize/models");
-const { Events } = require("../sequelize/models");
-const { Reader_Events } = require("../sequelize/models");
 const models = require("../sequelize/models");
+const { runInNewContext } = require("vm");
 
 // MIDDLE WARE
 router.use(
-	bodyParser.urlencoded({
-		extended: true,
-	})
+  bodyParser.urlencoded({
+    extended: true,
+  })
 );
 router.use(bodyParser.json());
 router.use(cookieParser());
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const store = new SequelizeStore({ db: models.sequelize });
 router.use(
-	session({
-		secret: "secret",
-		resave: false,
-		saveUninitialized: true,
-		store: store,
-	})
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: true,
+    store: store,
+  })
 );
 store.sync();
 const authenticate = (req, res, next) => {
-	if (req.session.user) {
-		next();
-	} else if (req.path == "/login") {
-		next();
-	} else {
-		res.redirect("/login");
-	}
+  if (req.session.user) {
+    next();
+  } else {
+    res.redirect("/login");
+  }
 };
 // MIDDLEWARE
 
 router.post("/create_reader", (req, res) => {
-	const { email, password, firstName, lastName, funFact } = req.body;
-	bcrypt.hash(password, 10, async (err, hash) => {
-		const reader = await Readers.create({
-			email: email,
-			password: hash,
-			firstName: firstName,
-			lastName: lastName,
-			funFact: funFact,
-			createdAt: new Date(),
-			updatedAt: new Date(),
-		});
-		res.render("pages/readerDash", { reader: reader });
-	});
+  const { email, password, firstName, lastName, funFact } = req.body;
+  bcrypt.hash(password, 10, async (err, hash) => {
+    const reader = await Readers.create({
+      email: email,
+      password: hash,
+      firstName: firstName,
+      lastName: lastName,
+      funFact: funFact,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+    res.render("pages/readerDash", { reader: reader });
+  });
+});
+
+router.post("/updateReader", authenticate, async (req, res) => {
+  const userId = req.session.user.id;
+  const { email, nickname, funFact } = req.body;
+  await Readers.update(
+    {
+      email: email,
+      nickname: nickname,
+      funFact: funFact,
+      updatedAt: new Date(),
+    },
+    {
+      where: {
+        id: userId,
+      },
+    }
+  );
+  res.redirect("/updateSucess");
+});
+
+router.post("/updatePassword", async (req, res) => {
+  const { password, newPassword } = req.body;
+  const reader = await Readers.findOne({
+    where: {
+      id: req.session.user.id,
+    },
+  });
+  bcrypt.compare(password, reader.password, async (err, result) => {
+    if (err) {
+      res.send(err);
+      return;
+    }
+    if (!result) {
+      res.render("pages/loginError");
+    } else {
+      bcrypt.hash(newPassword, 10, async (err, hash) => {
+        await Readers.update(
+          {
+            password: hash,
+            updatedAt: new Date(),
+          },
+          {
+            where: {
+              id: req.session.user.id,
+            },
+          }
+        );
+      });
+    }
+  });
+  res.redirect("/reader/updateSucess");
 });
 
 router.get("/account", (req, res) => {
-	// res.send(`Successful login, here is your account page, ${reader.firstName}`);
-	res.render("pages/readerAccount");
+  res.render("pages/readerAccount");
+});
+
+router.get("/updateSucess", (req, res) => {
+  res.render("pages/updateSuccessful", {
+    user: {
+      email: req.session.user.email,
+      nickname: req.session.user.nickname,
+      funFact: req.session.user.funFact,
+      id: req.session.user.id,
+    },
+  });
 });
 
 router.post("/login", async (req, res) => {
-	const { email, password } = req.body;
-	const reader = await Readers.findOne({
-		where: {
-			email: email,
-		},
-	});
-	if (!reader) {
-		res.status(400).render("pages/loginError");
-	} else {
-		bcrypt.compare(password, reader.password, (err, result) => {
-			if (err) {
-				res.send(err);
-				return;
-			}
-			if (!result) {
-				res.render("pages/loginError");
-			} else {
-				req.session.user = reader.dataValues;
-				res.redirect("/reader/dash");
-			}
-		});
-	}
+  const { email, password } = req.body;
+  const reader = await Readers.findOne({
+    where: {
+      email: email,
+    },
+  });
+  if (!reader) {
+    res.status(400).render("pages/loginError");
+  } else {
+    bcrypt.compare(password, reader.password, (err, result) => {
+      if (err) {
+        res.send(err);
+        return;
+      }
+      if (!result) {
+        res.render("pages/loginError");
+      } else {
+        req.session.user = reader.dataValues;
+        res.redirect("/reader/dash");
+      }
+    });
+  }
 });
 
 router.get("/dash", authenticate, (req, res) => {
-	res.render("pages/readerDash");
+  res.render("pages/readerDash");
 });
 
 router.get("/search", authenticate, async (req, res) => {
-	res.render("pages/readerSearchEvents");
+  res.render("pages/readerSearchEvents");
 });
 
 module.exports = router;
