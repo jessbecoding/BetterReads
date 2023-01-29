@@ -9,8 +9,16 @@
 	</head>
 	<body>
 		<%- include('../partials/authorNav'); %>
-		<main class="flex grow">
-			<h1 class="text-3xl p-3 text-center font-dm">Update successful!</h1>
+		<main class="flex flex-col grow gap-10 justify-center">
+			<h1 class="font-dm text-3xl text-center md:text-7xl text-mainPurple">
+				Update successful!
+			</h1>
+			<h2 class="text-xl text-center md:text-4xl">
+				You'll see your changes the next time you login.
+			</h2>
+			<h3 class="text-md text-center md:text-xl hover:text-mainPurple">
+				<a href="/author/dash">Click here to go back to your dashboard.</a>
+			</h3>
 		</main>
 		<%- include('../partials/authorFooter'); %>
 	</body>

@@ -214,7 +214,12 @@ router.post("/deleteAccount", authenticate, async (req, res) => {
 			id: req.session.user.id,
 		},
 	});
-	res.render("pages/userDeleted");
+	if (req.session) {
+		req.session.destroy((err) => {
+			res.render("pages/userDeleted");
+		});
+	}
+	// res.render("pages/userDeleted");
 });
 
 router.get("/books", authenticate, async (req, res) => {
@@ -229,7 +234,25 @@ router.get("/books", authenticate, async (req, res) => {
 	});
 });
 
-// THESE ROUTES ARE DYNAMIC. THEY NEED TO BE AT THE BOTTOM.
+router.post("/addBook", authenticate, async (req, res) => {
+	const { title, datePublished, description } = req.body;
+	await Books.create({
+		title: title,
+		datePublished: datePublished,
+		description: description,
+	});
+	const authorBooks = await Books.findAll({
+		where: {
+			authorId: req.session.user.id,
+		},
+	});
+	res.render("pages/authorBooks", {
+		user: { firstName: req.session.user.firstName },
+		authorBooks: authorBooks,
+	});
+});
+
+// THESE ROUTES ARE DYNAMIC. THEY SHOULD BE AT THE BOTTOM.
 
 router.post("/updateEvent/:id", authenticate, async (req, res) => {
 	const { eventTitle, location, description } = req.body;
