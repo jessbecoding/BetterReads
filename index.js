@@ -39,4 +39,8 @@ app.get("/about", (req, res) => {
 	res.render("pages/about");
 });
 
+app.get("/contact", (req, res) => {
+	res.render("pages/contact");
+});
+
 app.listen(PORT, console.log(`Listening on port ${PORT}`));
