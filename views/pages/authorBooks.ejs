@@ -24,7 +24,7 @@
 					class="grid gap-3 mt-3 md:grid-cols-3 md:w-full md:gap-5 lg:grid-cols-5">
 					<% authorBooks.forEach((book) => { %>
 					<div
-						class="border-b-4 md:border-[#7e49ba] md:border-4 md:p-3 md:rounded-xl">
+						class="border-b-4 border-[#7e49ba] md:border-4 md:p-3 md:rounded-xl">
 						<!------- TITLE ------->
 						<h1 class="text-xl font-dm mb-3"><%= book.title %></h1>
 						<!------- DATE PUBLISHED ------->
@@ -42,7 +42,7 @@
 								type="submit"
 								name="submit"
 								value="Update Book"
-								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-base mt-3 mb-3" />
+								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-base mt-3 mb-3 cursor-pointer" />
 						</form>
 					</div>
 					<% }); %>

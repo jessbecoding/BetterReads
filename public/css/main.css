@@ -739,6 +739,11 @@ video {
   border-bottom-width: 4px;
 }
 
+.border-\[\#7e49ba\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(126 73 186 / var(--tw-border-opacity));
+}
+
 .bg-textPurple {
   --tw-bg-opacity: 1;
   background-color: rgb(20 0 36 / var(--tw-bg-opacity));

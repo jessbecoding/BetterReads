@@ -301,7 +301,15 @@ router.post("/deleteEvent/:id2", authenticate, async (req, res) => {
 			id: delEvent,
 		},
 	});
-	res.render("pages/authorEvents");
+	const authorEvents = await Events.findAll({
+		where: {
+			authorId: req.session.user.id,
+		},
+	});
+	res.render("pages/authorEvents", {
+		user: { firstName: req.session.user.firstName },
+		authorEvents: authorEvents,
+	});
 });
 
 router.get("/updateBook/:id", authenticate, async (req, res) => {
@@ -338,6 +346,24 @@ router.post("/updateBook/:id", authenticate, async (req, res) => {
 	});
 	res.render("pages/authorBooks", {
 		user: { firstName: req.session.user.firstName },
+		authorBooks: authorBooks,
+	});
+});
+
+router.post("/deleteBook/:id2", authenticate, async (req, res) => {
+	const delBook = req.params.id2;
+	await Books.destroy({
+		where: {
+			id: delBook,
+		},
+	});
+	const authorBooks = await Books.findAll({
+		where: {
+			authorId: req.session.user.id,
+		},
+	});
+	res.render("pages/authorBooks", {
+		user: { fistName: req.session.user.firstName },
 		authorBooks: authorBooks,
 	});
 });
