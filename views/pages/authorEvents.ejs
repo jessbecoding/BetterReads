@@ -25,15 +25,21 @@
 					class="grid gap-3 mt-3 md:grid-cols-3 md:w-full md:gap-5 lg:grid-cols-5">
 					<% authorEvents.forEach((event) => { %>
 					<div
-						class="border-b-4 md:border-[#7e49ba] md:border-4 md:p-3 md:rounded-xl">
+						class="border-b-4 border-[#7e49ba] md:border-4 md:p-3 md:rounded-xl">
 						<h1 class="text-xl font-dm mb-3"><%= event.eventTitle %></h1>
-						<p><span class="font-bold">Date:</span> <%= event.date %></p>
-						<p><span class="font-bold">Time:</span> <%= event.time %></p>
-						<p>
+						<p class="pl-3">
+							<span class="font-bold">Date:</span> <%= event.date %>
+						</p>
+						<p class="pl-3">
+							<span class="font-bold">Time:</span> <%= event.time %>
+						</p>
+						<p class="pl-3">
 							<span class="font-bold">Location:</span> <%= event.location %>
 						</p>
-						<p><span class="font-bold">Free:</span> <%= event.isFree %></p>
-						<p>
+						<p class="pl-3">
+							<span class="font-bold">Free:</span> <%= event.isFree %>
+						</p>
+						<p class="pl-3">
 							<span class="font-bold">Description:</span> <%= event.description
 							%>
 						</p>
@@ -43,7 +49,7 @@
 								type="submit"
 								name="submit"
 								value="Update Event"
-								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-base mt-3 mb-3 cursor-pointer" />
+								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-base mt-3 mb-3 ml-3 cursor-pointer" />
 						</form>
 					</div>
 					<% }); %>
@@ -61,14 +67,14 @@
 						name="createEvent"
 						class="flex flex-col w-full gap-5">
 						<!------- EVENT TITLE ------->
-						<div class="flex items-center gap-3">
+						<div class="flex items-center gap-3 mt-3">
 							<label for="eventTitle" class="font-bold">Event Name:</label>
 							<input
 								type="text"
 								id="eventTitle"
 								name="eventTitle"
 								required
-								class="w-40 rounded-lg px-2 text-lg mt-3" />
+								class="w-48 rounded-lg px-2 text-lg" />
 						</div>
 						<!------- DATE ------->
 						<div class="flex items-center gap-3">
@@ -79,7 +85,7 @@
 								name="date"
 								placeholder="MM/DD/YYYY"
 								required
-								class="w-40 rounded-lg px-2 text-lg" />
+								class="w-48 rounded-lg px-2 text-lg" />
 						</div>
 						<!------- TIME ------->
 						<div class="flex items-center gap-3">
@@ -90,7 +96,7 @@
 								name="time"
 								placeholder="5:00 PM, EST"
 								required
-								class="w-36 rounded-lg px-2 text-lg" />
+								class="w-48 rounded-lg px-2 text-lg" />
 						</div>
 						<!------- LOCATION ------->
 						<div class="flex items-center gap-3">
@@ -101,7 +107,7 @@
 								name="location"
 								placeholder="Zoom"
 								required
-								class="w-40 rounded-lg px-2 text-lg" />
+								class="w-48 rounded-lg px-2 text-lg" />
 						</div>
 						<!------- PRICE ------->
 						<div class="flex items-center gap-3">
@@ -112,7 +118,7 @@
 								name="price"
 								placeholder="'free', '$10', etc."
 								required
-								class="w-40 rounded-lg px-2 text-lg" />
+								class="w-48 rounded-lg px-2 text-lg" />
 						</div>
 						<!------- DESCRIPTION ------->
 						<div class="flex gap-3 flex-col">

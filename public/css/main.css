@@ -587,6 +587,10 @@ video {
   margin-bottom: 1.25rem;
 }
 
+.ml-3 {
+  margin-left: 0.75rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -667,12 +671,12 @@ video {
   width: 12rem;
 }
 
-.w-36 {
-  width: 9rem;
-}
-
 .w-1\/2 {
   width: 50%;
+}
+
+.w-36 {
+  width: 9rem;
 }
 
 .w-screen {
@@ -841,12 +845,12 @@ video {
   padding-right: 0.75rem;
 }
 
-.pl-2 {
-  padding-left: 0.5rem;
-}
-
 .pl-3 {
   padding-left: 0.75rem;
+}
+
+.pl-2 {
+  padding-left: 0.5rem;
 }
 
 .text-center {
