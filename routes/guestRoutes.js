@@ -56,26 +56,16 @@ router.post("/create_author", (req, res) => {
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  const author = await Authors.findOne({
+  const guest = await Authors.findOne({
     where: {
-      email: email,
+      id: 12,
     },
   });
-  if (!author) {
+  if (!guest) {
     res.status(400).render("pages/loginError");
   } else {
-    bcrypt.compare(password, author.password, (err, result) => {
-      if (err) {
-        res.send(err);
-        return;
-      }
-      if (!result) {
-        res.render("pages/loginError");
-      } else {
-        req.session.user = author.dataValues;
-        res.redirect("/author/dash");
-      }
-    });
+    req.session.user = guest.dataValues;
+    res.redirect("/author/dash");
   }
 });
 

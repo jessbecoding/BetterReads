@@ -166,7 +166,7 @@ router.post("/deleteReader", authenticate, async (req, res) => {
       });
     }
   });
-  res.render("/pages/userDeleted");
+  res.render("pages/userDeleted");
 });
 
 router.get("/dash", authenticate, (req, res) => {
@@ -175,6 +175,18 @@ router.get("/dash", authenticate, (req, res) => {
 
 router.get("/search", authenticate, async (req, res) => {
   res.render("pages/readerSearchEvents");
+});
+
+router.get("/loggedOut", authenticate, (req, res) => {
+  res.render("pages/loggedOut");
+});
+
+router.post("/logout", authenticate, (req, res) => {
+  if (req.session) {
+    req.session.destroy((err) => {
+      res.redirect("/reader/loggedOut");
+    });
+  }
 });
 
 module.exports = router;
