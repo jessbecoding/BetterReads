@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Login to BetterReads</title>
+		<title>BetterReads | Login</title>
 		<%- include('../partials/head'); %>
 	</head>
 	<body>
@@ -18,8 +18,10 @@
 				<span class="font-dm text-mainPurple font-bold">BetterReads</span>
 				account
 			</h1>
+			<!------------ CONTAINER ------------>
 			<div
-				class="flex flex-col justify-center items-center mt-3 w-full md:flex-row md:w-3/4 md:h-[300px] md:gap-3 lg:w-1/2">
+				class="flex flex-col justify-center items-center mt-3 w-full md:flex-row md:w-3/4 md:h-[250px] md:gap-3 lg:w-1/2">
+				<!------- AUTHOR LOGIN ------->
 				<div
 					class="flex flex-col w-5/6 justify-center items-center mb-10 p-6 bg-accentPurple1 md:w-1/2 rounded-lg md:mb-0">
 					<h2 class="font-dm text-2xl text-textPurple">Author Account</h2>
@@ -48,6 +50,7 @@
 							class="block text-lg bg-accentPurple2 text-backgroundPurple w-36 rounded-full cursor-pointer font-quick md:mt-5" />
 					</form>
 				</div>
+				<!------- READER LOGIN ------->
 				<div
 					class="flex flex-col w-5/6 justify-center items-center mb-3 p-6 bg-mainPurple md:w-1/2 rounded-lg md:mb-0">
 					<h2 class="font-dm text-2xl text-backgroundPurple">Reader Account</h2>
@@ -81,12 +84,12 @@
 					type="submit"
 					name="submit"
 					value="Login as a guest"
-					class="block text-lg bg-accentPurple2 text-backgroundPurple w-36 rounded-full cursor-pointer md:mt-5" />
+					class="block text-lg bg-accentPurple2 text-backgroundPurple w-40 rounded-full cursor-pointer md:mt-0" />
 			</form>
 
 			<p class="text-sm font-quick mt-3 md:mt-0">
 				Don't have an account?
-				<a href="#" class="hover:text-mainPurple cursor-pointer"
+				<a href="/signup" class="hover:text-mainPurple cursor-pointer"
 					>Sign up here!</a
 				>
 			</p>
