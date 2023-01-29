@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BetterReads | Logged Out</title>
+		<%- include('../partials/head'); %>
+	</head>
+	<body>
+		<%- include('../partials/navbar'); %>
+		<main class="flex flex-col grow gap-10 justify-center">
+			<h1 class="font-dm text-3xl text-center md:text-7xl text-mainPurple">
+				You've been logged out!
+			</h1>
+			<h2 class="text-xl text-center md:text-4xl">See you later!</h2>
+			<h3 class="text-md text-center md:text-xl hover:text-mainPurple">
+				<a href="/login">Click here to log back in</a>
+			</h3>
+		</main>
+		<%- include('../partials/footer'); %>
+	</body>
+</html>

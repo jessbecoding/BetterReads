@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BetterReads | Update Successful</title>
+		<%- include('../partials/head'); %>
+	</head>
+	<body>
+		<%- include('../partials/authorNav'); %>
+		<main class="flex flex-col grow gap-10 justify-center">
+			<h1 class="font-dm text-3xl text-center md:text-7xl text-mainPurple">
+				Update successful!
+			</h1>
+			<h2 class="text-xl text-center md:text-4xl">
+				You'll see your changes the next time you login.
+			</h2>
+			<h3 class="text-md text-center md:text-xl hover:text-mainPurple">
+				<a href="/author/dash">Click here to go back to your dashboard.</a>
+			</h3>
+		</main>
+		<%- include('../partials/authorFooter'); %>
+	</body>
+</html>

@@ -172,3 +172,23 @@ body {
 	background-image: url("../assets/desktopTopBanner2.png");
 	background-size: cover;
 }
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f7dfff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #757575;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #323232;
+}
