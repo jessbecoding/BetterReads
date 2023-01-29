@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const { Readers } = require("../sequelize/models");
+const { Events } = require("../sequelize/models");
 const models = require("../sequelize/models");
 const { runInNewContext } = require("vm");
 
@@ -83,6 +84,15 @@ router.post("/create_reader", (req, res) => {
       updatedAt: new Date(),
     });
     res.render("pages/readerDash", { reader: reader });
+  });
+});
+
+// READ
+router.get("/events", authenticate, async (req, res) => {
+  const readerEvents = await Events.findAll();
+  res.render("pages/readerEvents", {
+    user: { nickname: req.session.user.nickname },
+    readerEvents: readerEvents,
   });
 });
 
