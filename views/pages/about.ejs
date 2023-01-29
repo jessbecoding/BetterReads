@@ -9,37 +9,100 @@
 	</head>
 	<body>
 		<%- include('../partials/navbar'); %>
-		<main class="flex flex-col grow items-center justify-between">
+		<main class="flex flex-col grow items-center md:justify-between">
 			<div class="px-3 w-[90%] md:flex md:flex-col md:items-center">
 				<h1 class="text-2xl text-center md:text-3xl">
 					About
 					<span class="font-dm text-mainPurple font-bold">BetterReads</span>
 				</h1>
 				<div class="pt-3 md:text-xl">
-					<p>
-						BetterReads was created as the backend project for two students in a
-						bootcamp.
+					<p class="text-center">
+						<span class="font-dm font-bold text-mainPurple">BetterReads</span>
+						was created as the backend project for two students in
+						DigitalCraft's Web Development Bootcamp.
 					</p>
 				</div>
-				<div class="grid grid-rows-2 gap-2 mt-5 md:grid-cols-2 md:grid-rows-0">
-					<div class="flex flex-col border-4 border-black justify-center">
+				<!------------ CONTAINER ------------>
+				<div
+					class="grid grid-rows-2 gap-2 mt-5 md:grid-cols-2 md:grid-rows-none lg:w-1/2">
+					<!------------ JESSICA ------------>
+					<div
+						class="flex flex-col border-b-4 border-b-accentPurple1 items-center px-3 md:border-b-0 md:border-r-4 md:border-r-accentPurple1">
 						<h2 class="font-dm underline text-2xl text-mainPurple">Jessica</h2>
-						<p>
-							Fun Fact: 'I collect oddities! Think dead bugs, taxidermy, pretty
-							rocks, all things nature.'
-						</p>
-						<p><a href="">LinkedIn Page</a></p>
-						<p><a href="">GitHub Account</a></p>
+						<div class="flex flex-wrap justify-between gap-3 mt-3 lg:w-[370px]">
+							<!------- FUN FACT ------->
+							<div>
+								<p class="font-bold">Fun Fact:</p>
+							</div>
+							<div class="w-2/3">
+								<p>
+									'I collect oddities! Think dead bugs, taxidermy, pretty rocks,
+									all things nature.'
+								</p>
+							</div>
+							<!------- LINKS ------->
+							<div><p class="font-bold">Links:</p></div>
+							<div class="w-2/3 mb-3">
+								<p>
+									<a
+										href="https://www.linkedin.com/in/jessikalynnadams/"
+										class="hover:text-mainPurple underline"
+										>LinkedIn Profile</a
+									>
+								</p>
+								<p>
+									<a
+										href="https://github.com/jessbecoding"
+										class="hover:text-mainPurple underline"
+										>GitHub Account</a
+									>
+								</p>
+							</div>
+						</div>
 					</div>
-					<div class="flex flex-col border-4 border-black justify-center">
+					<!------------ JAYELON ------------>
+					<div class="flex flex-col items-center px-3">
 						<h2 class="font-dm underline text-2xl text-mainPurple">Jayelon</h2>
-						<p>
-							Fun Fact: 'I've never broken a bone but I have dislocated my
-							shoulder. Never been skiing again.'
-						</p>
-						<p><a href="">LinkedIn Page</a></p>
-						<p><a href="">GitHub Account</a></p>
+						<div class="flex flex-wrap justify-between gap-3 mt-3 lg:w-[370px]">
+							<!------- FUN FACT ------->
+							<div>
+								<p class="font-bold">Fun Fact:</p>
+							</div>
+							<div class="w-2/3">
+								<p>
+									'I've never broken a bone, but I have dislocated my shoulder
+									before. Never been skiing again!'
+								</p>
+							</div>
+							<!------- LINKS ------->
+							<div><p class="font-bold">Links:</p></div>
+							<div class="w-2/3 mb-3">
+								<p>
+									<a
+										href="https://www.linkedin.com/in/jayelon-lasseigne-66970a229/"
+										class="hover:text-mainPurple underline"
+										>LinkedIn Profile</a
+									>
+								</p>
+								<p>
+									<a
+										href="https://github.com/Lasseignejk"
+										class="hover:text-mainPurple underline"
+										>GitHub Account</a
+									>
+								</p>
+							</div>
+						</div>
 					</div>
+				</div>
+				<!------------ LINK TO GITHUB REPO ------------>
+				<div class="text-center md:w-60 md:mt-7">
+					<p
+						class="text-xl bg-accentPurple1 rounded-full cursor-pointer font-bold">
+						<a href="https://github.com/jessbecoding/BetterReads"
+							><span class="font-dm">BetterReads</span> on GitHub</a
+						>
+					</p>
 				</div>
 			</div>
 			<div class="w-3/4 flex justify-center mt-10 md:w-1/2 lg:w-1/3">
