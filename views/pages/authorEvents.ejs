@@ -15,6 +15,11 @@
 				<h1 class="text-3xl font-quick px-3 text-center">
 					<span class="font-dm">My Events</span>
 				</h1>
+				<% if (authorEvents.length == 0) { %>
+				<p class="text-center pt-3">
+					It looks like you haven't made any events yet!
+				</p>
+				<% } %>
 				<div
 					class="grid gap-3 mt-3 md:grid-cols-3 md:w-full md:gap-5 lg:grid-cols-5">
 					<% authorEvents.forEach((event) => { %>

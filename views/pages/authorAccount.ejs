@@ -10,26 +10,26 @@
 	<body>
 		<%- include('../partials/authorNav'); %>
 		<main class="flex flex-col grow">
-			<h1 class="text-3xl p-3 text-center">author.firstName's account</h1>
+			<h1 class="text-3xl p-3 text-center"><%= user.firstName %>'s account</h1>
 			<div class="flex flex-col mb-5 px-3 gap-1">
 				<p class="md:text-lg">
-					<span class="font-bold pr-3">Email:</span> author.email
+					<span class="font-bold pr-3">Email:</span> <%= user.email %>
 				</p>
 				<p class="md:text-lg">
-					<span class="font-bold pr-3">First Name:</span> author.firstName
+					<span class="font-bold pr-3">First Name:</span> <%= user.firstName %>
 				</p>
 				<p class="md:text-lg">
-					<span class="font-bold pr-3">Last Name:</span> author.lastName
+					<span class="font-bold pr-3">Last Name:</span> <%= user.lastName %>
 				</p>
 				<p class="md:text-lg">
-					<span class="font-bold pr-3">Fun Fact:</span> author.funFact
+					<span class="font-bold pr-3">Fun Fact:</span> <%= user.funFact %>
 				</p>
 			</div>
 			<h2 class="text-2xl p-3">Update my account</h2>
 			<div class="flex flex-col w-full gap-5">
 				<form
-					action="/author/update_author"
-					method="update"
+					action="/author/updateAuthor"
+					method="post"
 					id="updateAuthor"
 					class="flex flex-col gap-3 px-3 mb-5 md:w-[400px]">
 					<div class="flex justify-between items-center">
@@ -40,6 +40,7 @@
 							type="email"
 							name="email"
 							id="authorEmail"
+							value="<%= user.email %>"
 							class="h-10 text-center rounded-full text-lg" />
 					</div>
 					<div class="flex justify-between items-center">
@@ -50,8 +51,8 @@
 							type="text"
 							name="firstName"
 							id="authorFirst"
-							class="h-10 text-center rounded-full text-lg"
-							required />
+							value="<%= user.firstName %>"
+							class="h-10 text-center rounded-full text-lg" />
 					</div>
 					<div class="flex justify-between items-center">
 						<label for="authorLast" class="font-bold pr-3 md:text-lg"
@@ -61,19 +62,21 @@
 							type="text"
 							name="lastName"
 							id="authorLast"
-							class="h-10 text-center rounded-full text-lg"
-							required />
+							value="<%= user.lastName %>"
+							class="h-10 text-center rounded-full text-lg" />
 					</div>
 					<div class="flex justify-between items-center">
 						<label for="authorFact" class="font-bold pr-3 md:text-lg"
 							>New Fun Fact:
 						</label>
-						<input
-							type="textarea"
-							form="updateAuthor"
+						<textarea
 							name="funFact"
 							id="authorFact"
-							class="text-lg h-10 text-center rounded-full" />
+							cols="20"
+							rows="5"
+							class="text-center rounded-lg">
+<%= user.funFact %></textarea
+						>
 					</div>
 					<input
 						type="submit"

@@ -6,6 +6,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const { Authors } = require("../sequelize/models");
 const { Events } = require("../sequelize/models");
+const { Books } = require("../sequelize/models");
 const models = require("../sequelize/models");
 
 // MIDDLE WARE
@@ -83,7 +84,7 @@ router.post("/logout", (req, res) => {
 
 router.get("/dash", authenticate, (req, res) => {
 	res.render("pages/authorDash", {
-		user: { fistName: req.session.user.firstName },
+		user: { firstName: req.session.user.firstName },
 	});
 });
 
@@ -101,7 +102,7 @@ router.get("/events", authenticate, async (req, res) => {
 
 router.post("/createEvent", authenticate, async (req, res) => {
 	const { eventTitle, date, location, time, isFree, description } = req.body;
-	const newEvent = await Events.create({
+	await Events.create({
 		eventTitle: eventTitle,
 		date: date,
 		location: location,
@@ -110,26 +111,107 @@ router.post("/createEvent", authenticate, async (req, res) => {
 		description: description,
 		authorId: req.session.user.id,
 	});
-	res.render("pages/authorEvents");
-});
-
-router.get("/account", authenticate, (req, res) => {
-	res.render("pages/authorAccount");
-});
-
-router.get("/books", authenticate, (req, res) => {
-	res.render("pages/authorBooks", {
-		user: { fistName: req.session.user.firstName },
+	const authorEvents = await Events.findAll({
+		where: {
+			authorId: req.session.user.id,
+		},
+	});
+	res.render("pages/authorEvents", {
+		user: { firstName: req.session.user.firstName, id: req.session.user },
+		authorEvents: authorEvents,
 	});
 });
 
-router.delete("/deleteEvent/:id2", authenticate, async (req, res) => {
-	const delEvent = req.params.id2;
-	await delEvent.destroy();
-	res.render("pages/events");
+router.get("/account", authenticate, (req, res) => {
+	res.render("pages/authorAccount", {
+		user: {
+			email: req.session.user.email,
+			firstName: req.session.user.firstName,
+			lastName: req.session.user.lastName,
+			funFact: req.session.user.funFact,
+			id: req.session.user.id,
+		},
+	});
 });
 
-// THIS ROUTE IS DYNAMIC. IT NEEDS TO BE AT THE BOTTOM.
+router.post("/updateAuthor", authenticate, async (req, res) => {
+	const userId = req.session.user.id;
+	const { firstName, lastName, email, funFact } = req.body;
+	await Authors.update(
+		{
+			email: email,
+			firstName: firstName,
+			lastName: lastName,
+			funFact: funFact,
+			updatedAt: new Date(),
+		},
+		{
+			where: {
+				id: userId,
+			},
+		}
+	);
+	res.render("pages/authorAccount", {
+		user: {
+			email: req.session.user.email,
+			firstName: req.session.user.firstName,
+			lastName: req.session.user.lastName,
+			funFact: req.session.user.funFact,
+			id: req.session.user.id,
+		},
+	});
+});
+
+router.get("/books", authenticate, async (req, res) => {
+	const authorBooks = await Books.findAll({
+		where: {
+			authorId: req.session.user.id,
+		},
+	});
+	res.render("pages/authorBooks", {
+		user: { fistName: req.session.user.firstName },
+		authorBooks: authorBooks,
+	});
+});
+
+// THESE ROUTES ARE DYNAMIC. THEY NEED TO BE AT THE BOTTOM.
+
+router.post("/updateEvent/:id", authenticate, async (req, res) => {
+	const { eventTitle, location, description } = req.body;
+	await Events.update(
+		{
+			eventTitle: eventTitle,
+			location: location,
+			description: description,
+			updatedAt: new Date(),
+		},
+		{
+			where: {
+				id: req.params.id,
+			},
+		}
+	);
+	const authorEvents = await Events.findAll({
+		where: {
+			authorId: req.session.user.id,
+		},
+	});
+	res.render("pages/authorEvents", {
+		user: { firstName: req.session.user.firstName },
+		authorEvents: authorEvents,
+	});
+});
+
+router.post("/deleteEvent/:id2", authenticate, async (req, res) => {
+	const delEvent = req.params.id2;
+	Events.destroy({
+		where: {
+			id: delEvent,
+		},
+	});
+	res.render("pages/authorEvents");
+});
+
 router.get("/updateEvent/:id", authenticate, async (req, res) => {
 	const eventToUpdate = await Events.findOne({
 		where: {
