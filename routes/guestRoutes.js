@@ -64,7 +64,7 @@ router.post("/login", async (req, res) => {
     res.status(400).render("pages/loginError");
   } else {
     req.session.user = guest.dataValues;
-    res.redirect("/author/dash");
+    res.redirect("/guest/dash");
   }
 });
 
