@@ -166,7 +166,7 @@ router.post("/deleteReader", authenticate, async (req, res) => {
       });
     }
   });
-  res.render("/pages/userDeleted");
+  res.render("pages/userDeleted");
 });
 
 router.get("/dash", authenticate, (req, res) => {
