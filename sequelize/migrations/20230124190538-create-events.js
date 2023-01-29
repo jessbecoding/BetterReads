@@ -15,7 +15,7 @@ module.exports = {
       },
       date: {
         allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
       },
       location: {
         allowNull: false,
@@ -26,7 +26,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       isFree: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.STRING,
       },
       description: {
         type: Sequelize.STRING,
