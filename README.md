@@ -6,6 +6,8 @@ BetterReads is an app where authors can reach their readers by hosting events. I
 
 The database uses ElephantSQL, I used JavaScript to write the backendlogic. Our frontend features custom CSS as well as Tailwind. We also used JavaScript for the frontend logic.
 
+You can read more about the process of building this app <a href="https://medium.com/@jessbecoding/betterreads-487d30886de6">here</a> on Jessika's Medium, or <a href="#">here</a> for Jaye's.
+
 ## Challenges
 
 The major challenge we faced during this project was scaling it. We tried to make a many to many relationship join table, but that proved too difficult for our time frame. We did start off the project with a merge conflict (we were both trying to update the same file). I'm thankful it happened so early on because I think it helped us avoid any major conflicts as we moved forward. We did run into a few more merge conflict due to us both installing and trying to merge those changes at the same time. Luckily, it just took a little reading and a couple of curly brackets to fix.
