@@ -71,7 +71,7 @@ router.post("/updateReader", authenticate, async (req, res) => {
   res.redirect("/reader/updateSucess");
 });
 
-router.post("/updatePassword", async (req, res) => {
+router.post("/updatePassword", authenticate, async (req, res) => {
   const { password, newPassword } = req.body;
   const reader = await Readers.findOne({
     where: {
@@ -108,7 +108,7 @@ router.get("/account", (req, res) => {
   res.render("pages/readerAccount");
 });
 
-router.get("/updateSucess", (req, res) => {
+router.get("/updateSucess", authenticate, (req, res) => {
   res.render("pages/updateSuccessful", {
     user: {
       email: req.session.user.email,
