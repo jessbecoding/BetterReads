@@ -75,7 +75,7 @@ router.get("/loggedOut", authenticate, (req, res) => {
 router.post("/logout", authenticate, (req, res) => {
   if (req.session) {
     req.session.destroy((err) => {
-      res.redirect("/author/loggedOut");
+      res.redirect("/guest/loggedOut");
     });
   }
 });
