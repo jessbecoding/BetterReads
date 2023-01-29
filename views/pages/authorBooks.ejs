@@ -28,13 +28,14 @@
 						<!------- TITLE ------->
 						<h1 class="text-xl font-dm mb-3"><%= book.title %></h1>
 						<!------- DATE PUBLISHED ------->
-						<p>
+						<p class="pl-3">
 							<span class="font-bold">Date Published:</span> <%=
 							book.datePublished %>
 						</p>
 						<!------- DESCRIPTION ------->
-						<p>
-							<span class="font-bold">Description</span> <%= book.description %>
+						<p class="pl-3">
+							<span class="font-bold">Description:</span> <%= book.description
+							%>
 						</p>
 						<!------- LINK TO UPDATE A BOOK ------->
 						<form action="/author/updateBook/<%= book.id %>" method="get">
@@ -42,7 +43,7 @@
 								type="submit"
 								name="submit"
 								value="Update Book"
-								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-base mt-3 mb-3 cursor-pointer" />
+								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-base mt-3 mb-3 ml-3 cursor-pointer" />
 						</form>
 					</div>
 					<% }); %>
@@ -59,14 +60,14 @@
 						name="addBook"
 						class="flex flex-col w-full gap-5">
 						<!------- BOOK TITLE ------->
-						<div class="flex items-center gap-3">
+						<div class="flex items-center gap-3 mt-3">
 							<label for="bookTitle" class="font-bold">Book Title:</label>
 							<input
 								type="text"
 								id="bookTitle"
 								name="title"
 								required
-								class="w-36 rounded-lg text-lg mt-3 pl-2" />
+								class="w-48 rounded-lg text-lg pl-2" />
 						</div>
 						<!------- DATE PUBLISHED ------->
 						<div class="flex items-center gap-3">
@@ -78,12 +79,6 @@
 								placeholder="MM/DD/YYYY"
 								required
 								class="w-40 rounded-lg px-1 text-lg pl-2" />
-							<!-- <input
-								type="date"
-								id="bookDate"
-								name="datePublished"
-								required
-								class="w-40 rounded-lg px-1 text-lg" /> -->
 						</div>
 						<!------- BOOK DESCRIPTION ------->
 						<div class="flex gap-3 flex-col">
@@ -96,7 +91,7 @@
 								required
 								cols="20"
 								rows="5"
-								class="md:w-1/2 lg:w-1/4 pl-2"></textarea>
+								class="md:w-1/2 lg:w-1/4 pl-2 rounded-lg"></textarea>
 						</div>
 						<!------- INPUT SUBMIT ------->
 						<div class="flex justify-start">
