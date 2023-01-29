@@ -6,6 +6,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const { Readers } = require("../sequelize/models");
 const { Events } = require("../sequelize/models");
+const { Books } = require("../sequelize/models");
 const models = require("../sequelize/models");
 const { runInNewContext } = require("vm");
 
@@ -96,6 +97,14 @@ router.get("/events", authenticate, async (req, res) => {
   });
 });
 
+router.get("/books", authenticate, async (req, res) => {
+  const readerBooks = await Books.findAll();
+  res.render("pages/readerBooks", {
+    user: { nickname: req.session.user.nickname },
+    readerBooks: readerBooks,
+  });
+});
+
 // UPDATE
 router.post("/updateReader", authenticate, async (req, res) => {
   const userId = req.session.user.id;
@@ -181,7 +190,14 @@ router.get("/account", (req, res) => {
 });
 
 router.get("/dash", authenticate, (req, res) => {
-  res.render("pages/readerDash");
+  res.render("pages/readerDash", {
+    user: {
+      email: req.session.user.email,
+      nickname: req.session.user.nickname,
+      funFact: req.session.user.funFact,
+      id: req.session.user.id,
+    },
+  });
 });
 
 router.get("/search", authenticate, async (req, res) => {
