@@ -1181,8 +1181,8 @@ body {
     order: -9999;
   }
 
-  .md\:mt-7 {
-    margin-top: 1.75rem;
+  .md\:mt-20 {
+    margin-top: 5rem;
   }
 
   .md\:mt-3 {
@@ -1237,8 +1237,8 @@ body {
     height: 12rem;
   }
 
-  .md\:h-\[300px\] {
-    height: 300px;
+  .md\:h-\[250px\] {
+    height: 250px;
   }
 
   .md\:h-\[400px\] {
