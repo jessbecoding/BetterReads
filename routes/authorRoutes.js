@@ -60,18 +60,22 @@ router.post("/login", async (req, res) => {
 			email: email,
 		},
 	});
-	bcrypt.compare(password, author.password, (err, result) => {
-		if (err) {
-			res.send(err);
-			return;
-		}
-		if (!result) {
-			res.send("Login Credentials are invalid. Please try again.");
-		} else {
-			req.session.user = author.dataValues;
-			res.redirect("/author/dash");
-		}
-	});
+	if (!author) {
+		res.status(400).render("pages/loginError");
+	} else {
+		bcrypt.compare(password, author.password, (err, result) => {
+			if (err) {
+				res.send(err);
+				return;
+			}
+			if (!result) {
+				res.render("pages/loginError");
+			} else {
+				req.session.user = author.dataValues;
+				res.redirect("/author/dash");
+			}
+		});
+	}
 });
 
 router.post("/logout", (req, res) => {

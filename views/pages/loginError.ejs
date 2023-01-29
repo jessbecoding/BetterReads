@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BetterReads | Login Error</title>
+		<%- include('../partials/head'); %>
+	</head>
+	<body>
+		<%- include('../partials/navbar'); %>
+		<main class="flex flex-col grow text-center gap-3">
+			<h1 class="font-dm text-3xl text-center">Oh no!</h1>
+			<p class="text-xl">
+				It looks like we don't have a user with that email/password combination.
+			</p>
+			<p class="text-xl">
+				Please go back to the
+				<a href="/login" class="underline hover:text-mainPurple cursor-pointer"
+					>Login page</a
+				>
+				and try again, or click
+				<a href="/signup" class="underline hover:text-mainPurple cursor-pointer"
+					>here</a
+				>
+				to make an account.
+			</p>
+		</main>
+		<%- include('../partials/footer'); %>
+	</body>
+</html>
