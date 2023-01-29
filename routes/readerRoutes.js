@@ -68,7 +68,7 @@ router.post("/updateReader", authenticate, async (req, res) => {
       },
     }
   );
-  res.redirect("/updateSucess");
+  res.redirect("/reader/updateSucess");
 });
 
 router.post("/updatePassword", async (req, res) => {
