@@ -76,11 +76,14 @@
 					</form>
 				</div>
 			</div>
-			<p class="text-sm font-quick mt-3 md:mt-0">
-				<a href="/signup" class="hover:text-mainPurple cursor-pointer"
-					>Login as a guest</a
-				>
-			</p>
+			<form action="/guest/login" method="post">
+				<input
+					type="submit"
+					name="submit"
+					value="Login as a guest"
+					class="block text-lg bg-accentPurple2 text-backgroundPurple w-36 rounded-full cursor-pointer md:mt-5" />
+			</form>
+
 			<p class="text-sm font-quick mt-3 md:mt-0">
 				Don't have an account?
 				<a href="#" class="hover:text-mainPurple cursor-pointer"
