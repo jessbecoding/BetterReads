@@ -4,24 +4,23 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Author Events</title>
+		<title>BetterReads | My Events</title>
 		<%- include('../partials/head'); %>
 	</head>
 	<body>
 		<%- include('../partials/authorNav'); %>
-		<h1 class="text-3xl font-quick px-3 text-center">
-			<span class="font-dm">Welcome,</span> <%= user.firstName %>
-		</h1>
 
 		<main class="flex grow flex-col px-3">
 			<section class="mt-3">
-				<h1 class="text-2xl font-dm">My Events</h1>
+				<h1 class="text-3xl font-quick px-3 text-center">
+					<span class="font-dm">My Events</span>
+				</h1>
 				<div
-					class="flex flex-col gap-3 divide-y divide-violet-500 mt-3 md:flex-row md:flex-wrap md:w-full md:divide-y-0">
+					class="grid gap-3 mt-3 md:grid-cols-3 md:w-full md:gap-5 lg:grid-cols-5">
 					<% authorEvents.forEach((event) => { %>
-					<div class="md:w-80">
-						<h1 class="hidden"><%= event.id %></h1>
-						<h1 class="text-lg font-dm mb-3"><%= event.eventTitle %></h1>
+					<div
+						class="border-b-4 md:border-[#7e49ba] md:border-4 md:p-3 md:rounded-xl">
+						<h1 class="text-xl font-dm mb-3"><%= event.eventTitle %></h1>
 						<p><span class="font-bold">Date:</span> <%= event.date %></p>
 						<p><span class="font-bold">Time:</span> <%= event.time %></p>
 						<p>
@@ -32,12 +31,12 @@
 							<span class="font-bold">Description:</span> <%= event.description
 							%>
 						</p>
-						<form action="/author/updateEvent:<%= event.id %>" method="get">
+						<form action="/author/updateEvent/<%= event.id %>" method="get">
 							<input
 								type="submit"
 								name="submit"
 								value="Update Event"
-								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-base mt-3" />
+								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-base mt-3 mb-3" />
 						</form>
 					</div>
 					<% }); %>
@@ -120,9 +119,9 @@
 								required
 								cols="20"
 								rows="5"
-								class="md:w-1/2"></textarea>
+								class="md:w-1/2 lg:w-1/4"></textarea>
 						</div>
-						<div class="flex justify-center md:justify-start">
+						<div class="flex justify-start">
 							<input
 								type="submit"
 								name="submit"

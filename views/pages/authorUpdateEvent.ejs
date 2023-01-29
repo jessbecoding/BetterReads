@@ -24,7 +24,7 @@
 							id="eventTitle"
 							name="eventTitle"
 							required
-							value="blah "
+							value="<%= eventToUpdate.eventTitle %>"
 							class="w-36 rounded-lg text-lg mt-3" />
 					</div>
 					<div class="flex items-center gap-3">
@@ -34,6 +34,7 @@
 							id="eventDate"
 							name="date"
 							required
+							value="<%= eventToUpdate.date %>"
 							class="w-40 rounded-lg px-1 text-lg" />
 					</div>
 					<div class="flex items-center gap-3">
@@ -51,6 +52,7 @@
 							type="text"
 							id="eventLocation"
 							name="location"
+							value="<%= eventToUpdate.location %>"
 							required
 							class="w-40 rounded-lg px-1 text-lg" />
 					</div>
@@ -81,13 +83,15 @@
 							required
 							cols="20"
 							rows="5"
-							class="md:w-1/2"></textarea>
+							class="md:w-1/2">
+<%= eventToUpdate.description %></textarea
+						>
 					</div>
 					<div class="flex justify-center md:justify-start">
 						<input
 							type="submit"
 							name="submit"
-							value="Create Event"
+							value="Update Event"
 							class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-xl" />
 					</div>
 				</form>
