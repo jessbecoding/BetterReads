@@ -13,18 +13,15 @@
     <main class="flex grow flex-col px-3 mt-3 gap-3">
       <h1 class="text-2xl font-dm">My Events</h1>
       <!------- CHECK LENGTH OF EVENTS ------->
-      <% if (readerEvents.length == 0) { %>
-      <p class="text-center pt-3">It looks like you don't have any events!</p>
+      <% if (readerBooks.length == 0) { %>
+      <p class="text-center pt-3">It looks like you don't have any books!</p>
       <% } %>
 	  <div class="grid gap-3 mt-3 md:grid-cols-3 md:w-full md:gap-5 lg:grid-cols-5">
-		<% readerEvents.forEach((event) => { %>
+		<% readerBooks.forEach((book) => { %>
 			<div class="border-b-4 md:border-[#7e49ba] md:border-4 md:p-3 md:rounded-xl">
-				<h1 class="text-xl font-dm mb-3"><%= event.eventTitle %></h1>
-				<p><span class="font-bold">Date:</span> <%= event.date %></p>
-				<p><span class="font-bold">Time:</span> <%= event.time %></p>
-				<p><span class="font-bold">Location:</span> <%= event.location %></p>
-				<p><span class="font-bold">Free:</span> <%= event.isFree %></p>
-				<p><span class="font-bold">Description:</span> <%= event.description %></p>
+				<h1 class="text-xl font-dm mb-3"><%= book.title %></h1>
+				<p><span class="font-bold">Date Published:</span> <%= book.datePublished %></p>
+				<p><span class="font-bold">Description:</span> <%= book.description %></p>
 		<% }) %>
 	</div>
     </main>
