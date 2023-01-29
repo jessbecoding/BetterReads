@@ -123,6 +123,12 @@ router.get("/books", authenticate, (req, res) => {
 	});
 });
 
+router.delete("/deleteEvent/:id2", authenticate, async (req, res) => {
+	const delEvent = req.params.id2;
+	await delEvent.destroy();
+	res.render("pages/events");
+});
+
 // THIS ROUTE IS DYNAMIC. IT NEEDS TO BE AT THE BOTTOM.
 router.get("/updateEvent/:id", authenticate, async (req, res) => {
 	const eventToUpdate = await Events.findOne({
