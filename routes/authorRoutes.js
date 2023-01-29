@@ -79,7 +79,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.get("/loggedOut", authenticate, (req, res) => {
+router.get("/loggedOut", (req, res) => {
   res.render("pages/loggedOut");
 });
 

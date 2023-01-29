@@ -64,11 +64,11 @@ router.post("/login", async (req, res) => {
     res.status(400).render("pages/loginError");
   } else {
     req.session.user = guest.dataValues;
-    res.redirect("/author/dash");
+    res.redirect("/guest/dash");
   }
 });
 
-router.get("/loggedOut", authenticate, (req, res) => {
+router.get("/loggedOut", (req, res) => {
   res.render("pages/loggedOut");
 });
 

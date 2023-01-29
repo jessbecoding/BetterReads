@@ -177,7 +177,7 @@ router.get("/search", authenticate, async (req, res) => {
   res.render("pages/readerSearchEvents");
 });
 
-router.get("/loggedOut", authenticate, (req, res) => {
+router.get("/loggedOut", (req, res) => {
   res.render("pages/loggedOut");
 });
 
