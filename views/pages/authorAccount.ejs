@@ -149,7 +149,10 @@
 						</div>
 						<p>To delete your account, please type your password below.</p>
 						<p class="font-bold">YOU CANNOT UNDO THIS ACTION!</p>
-						<form action="" method="delete" class="my-3 md:w-[400px]">
+						<form
+							action="/author/deleteAccount"
+							method="post"
+							class="my-3 md:w-[400px]">
 							<!------- INPUT PASSWORD ------->
 							<div class="flex justify-between items-center">
 								<label for="authorDelPassword" class="font-bold pr-3 md:text-lg"

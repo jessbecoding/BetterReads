@@ -79,10 +79,14 @@ router.post("/login", async (req, res) => {
 	}
 });
 
+router.get("/loggedOut", (req, res) => {
+	res.render("pages/loggedOut");
+});
+
 router.post("/logout", (req, res) => {
 	if (req.session) {
 		req.session.destroy((err) => {
-			res.redirect("/login");
+			res.redirect("/author/loggedOut");
 		});
 	}
 });
@@ -204,6 +208,15 @@ router.post("/updatePassword", async (req, res) => {
 	});
 });
 
+router.post("/deleteAccount", authenticate, async (req, res) => {
+	await Authors.destroy({
+		where: {
+			id: req.session.user.id,
+		},
+	});
+	res.render("pages/userDeleted");
+});
+
 router.get("/books", authenticate, async (req, res) => {
 	const authorBooks = await Books.findAll({
 		where: {
@@ -246,7 +259,7 @@ router.post("/updateEvent/:id", authenticate, async (req, res) => {
 
 router.post("/deleteEvent/:id2", authenticate, async (req, res) => {
 	const delEvent = req.params.id2;
-	Events.destroy({
+	await Events.destroy({
 		where: {
 			id: delEvent,
 		},
