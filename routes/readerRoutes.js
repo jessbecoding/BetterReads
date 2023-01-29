@@ -42,8 +42,7 @@ router.post("/create_reader", (req, res) => {
     const reader = await Readers.create({
       email: email,
       password: hash,
-      firstName: firstName,
-      lastName: lastName,
+      nickname: nickname,
       funFact: funFact,
       createdAt: new Date(),
       updatedAt: new Date(),
