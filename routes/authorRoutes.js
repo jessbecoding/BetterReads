@@ -236,10 +236,12 @@ router.get("/books", authenticate, async (req, res) => {
 
 router.post("/addBook", authenticate, async (req, res) => {
 	const { title, datePublished, description } = req.body;
+	const authorId = req.session.user.id;
 	await Books.create({
 		title: title,
 		datePublished: datePublished,
 		description: description,
+		authorId: authorId,
 	});
 	const authorBooks = await Books.findAll({
 		where: {
@@ -253,6 +255,18 @@ router.post("/addBook", authenticate, async (req, res) => {
 });
 
 // THESE ROUTES ARE DYNAMIC. THEY SHOULD BE AT THE BOTTOM.
+
+router.get("/updateEvent/:id", authenticate, async (req, res) => {
+	const eventToUpdate = await Events.findOne({
+		where: {
+			id: req.params.id,
+		},
+	});
+	res.render("pages/authorUpdateEvent", {
+		user: { firstName: req.session.user.firstName },
+		eventToUpdate: eventToUpdate,
+	});
+});
 
 router.post("/updateEvent/:id", authenticate, async (req, res) => {
 	const { eventTitle, location, description } = req.body;
@@ -290,15 +304,41 @@ router.post("/deleteEvent/:id2", authenticate, async (req, res) => {
 	res.render("pages/authorEvents");
 });
 
-router.get("/updateEvent/:id", authenticate, async (req, res) => {
-	const eventToUpdate = await Events.findOne({
+router.get("/updateBook/:id", authenticate, async (req, res) => {
+	const bookToUpdate = await Books.findOne({
 		where: {
 			id: req.params.id,
 		},
 	});
-	res.render("pages/authorUpdateEvent", {
+	res.render("pages/authorUpdateBook", {
 		user: { firstName: req.session.user.firstName },
-		eventToUpdate: eventToUpdate,
+		bookToUpdate: bookToUpdate,
+	});
+});
+
+router.post("/updateBook/:id", authenticate, async (req, res) => {
+	const { title, datePublished, description } = req.body;
+	await Books.update(
+		{
+			title: title,
+			datePublished: datePublished,
+			description: description,
+			updatedAt: new Date(),
+		},
+		{
+			where: {
+				id: req.params.id,
+			},
+		}
+	);
+	const authorBooks = await Books.findAll({
+		where: {
+			authorId: req.session.user.id,
+		},
+	});
+	res.render("pages/authorBooks", {
+		user: { firstName: req.session.user.firstName },
+		authorBooks: authorBooks,
 	});
 });
 

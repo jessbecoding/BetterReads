@@ -810,6 +810,10 @@ video {
   padding-right: 0.75rem;
 }
 
+.pl-2 {
+  padding-left: 0.5rem;
+}
+
 .pl-3 {
   padding-left: 0.75rem;
 }

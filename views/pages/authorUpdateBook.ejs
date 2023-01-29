@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BetterReads | Update Book</title>
+		<%- include('../partials/head'); %>
+	</head>
+	<body>
+		<%- include('../partials/authorNav'); %>
+		<main class="flex grow flex-col px-3 gap-5">
+			<section>
+				<h1 class="text-2xl font-dm">Update Book</h1>
+				<div class="flex w-full relative px-3 flex-col items-center">
+					<form
+						action="/author/updateBook/<%= bookToUpdate.id %>"
+						method="post"
+						name="modifyBook"
+						class="flex flex-col w-full gap-5">
+						<div class="flex items-center gap-3">
+							<label for="bookTitle" class="font-bold">Book Title:</label>
+							<input
+								type="text"
+								id="bookTitle"
+								name="title"
+								value="<%= bookToUpdate.title %>"
+								class="w-36 rounded-lg text-lg mt-3 pl-2" />
+						</div>
+						<!------- DATE PUBLISHED ------->
+						<div class="flex items-center gap-3">
+							<label for="bookDate" class="font-bold">Date Published:</label>
+							<input
+								type="text"
+								id="bookDate"
+								name="datePublished"
+								value="<%= bookToUpdate.datePublished %>"
+								class="w-40 rounded-lg px-1 text-lg pl-2" />
+						</div>
+						<!------- BOOK DESCRIPTION ------->
+						<div class="flex gap-3 flex-col">
+							<label for="bookDescription" class="font-bold"
+								>Description:</label
+							>
+							<textarea
+								name="description"
+								id="bookDescription"
+								required
+								cols="20"
+								rows="5"
+								class="md:w-1/2 lg:w-1/4 pl-2">
+<%= bookToUpdate.description %></textarea
+							>
+						</div>
+						<!------- INPUT SUBMIT ------->
+						<div class="flex justify-start">
+							<input
+								type="submit"
+								name="submit"
+								value="Update Book"
+								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-xl cursor-pointer" />
+						</div>
+					</form>
+				</div>
+			</section>
+			<section>
+				<h1 class="text-2xl font-dm">Delete Book</h1>
+				<div class="px-3 mt-2">
+					<form
+						action="/author/deleteBook/<%= bookToUpdate.id %>"
+						method="post">
+						<input
+							type="submit"
+							name="submit"
+							value="Delete Book"
+							class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 md:text-lg" />
+					</form>
+				</div>
+			</section>
+		</main>
+		<%- include('../partials/authorFooter'); %>
+	</body>
+</html>

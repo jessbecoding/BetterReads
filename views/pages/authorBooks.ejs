@@ -48,6 +48,8 @@
 					<% }); %>
 				</div>
 			</section>
+
+			<!------------ ADD A NEW BOOK ------------>
 			<section class="flex w-full mt-5 flex-col">
 				<h1 class="text-2xl font-dm mb-1">Add a new book</h1>
 				<div class="flex w-full relative px-3 flex-col items-center">
@@ -56,6 +58,7 @@
 						method="post"
 						name="addBook"
 						class="flex flex-col w-full gap-5">
+						<!------- BOOK TITLE ------->
 						<div class="flex items-center gap-3">
 							<label for="bookTitle" class="font-bold">Book Title:</label>
 							<input
@@ -63,18 +66,26 @@
 								id="bookTitle"
 								name="title"
 								required
-								class="w-36 rounded-lg text-lg mt-3" />
+								class="w-36 rounded-lg text-lg mt-3 pl-2" />
 						</div>
+						<!------- DATE PUBLISHED ------->
 						<div class="flex items-center gap-3">
-							<label for="bookDate" class="font-bold">Date:</label>
+							<label for="bookDate" class="font-bold">Date Published:</label>
 							<input
+								type="text"
+								id="bookDate"
+								name="datePublished"
+								placeholder="MM/DD/YYYY"
+								required
+								class="w-40 rounded-lg px-1 text-lg pl-2" />
+							<!-- <input
 								type="date"
 								id="bookDate"
 								name="datePublished"
 								required
-								class="w-40 rounded-lg px-1 text-lg" />
+								class="w-40 rounded-lg px-1 text-lg" /> -->
 						</div>
-
+						<!------- BOOK DESCRIPTION ------->
 						<div class="flex gap-3 flex-col">
 							<label for="bookDescription" class="font-bold"
 								>Description:</label
@@ -85,14 +96,15 @@
 								required
 								cols="20"
 								rows="5"
-								class="md:w-1/2 lg:w-1/4"></textarea>
+								class="md:w-1/2 lg:w-1/4 pl-2"></textarea>
 						</div>
+						<!------- INPUT SUBMIT ------->
 						<div class="flex justify-start">
 							<input
 								type="submit"
 								name="submit"
 								value="Add Book"
-								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-xl" />
+								class="w-40 bg-textPurple text-center text-backgroundPurple rounded-full px-3 py-1 text-xl cursor-pointer" />
 						</div>
 					</form>
 				</div>
