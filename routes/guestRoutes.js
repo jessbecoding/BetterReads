@@ -55,7 +55,6 @@ router.post("/create_author", (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
   const guest = await Authors.findOne({
     where: {
       id: 12,
