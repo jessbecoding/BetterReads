@@ -36,14 +36,48 @@ const authenticate = (req, res, next) => {
 };
 // MIDDLEWARE
 
+// LOGIN LOGOUT
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  const reader = await Readers.findOne({
+    where: {
+      email: email,
+    },
+  });
+  if (!reader) {
+    res.status(400).render("pages/loginError");
+  } else {
+    bcrypt.compare(password, reader.password, (err, result) => {
+      if (err) {
+        res.send(err);
+        return;
+      }
+      if (!result) {
+        res.render("pages/loginError");
+      } else {
+        req.session.user = reader.dataValues;
+        res.redirect("/reader/dash");
+      }
+    });
+  }
+});
+
+router.post("/logout", authenticate, (req, res) => {
+  if (req.session) {
+    req.session.destroy((err) => {
+      res.redirect("/reader/loggedOut");
+    });
+  }
+});
+
+// CREATE
 router.post("/create_reader", (req, res) => {
-  const { email, password, firstName, lastName, funFact } = req.body;
+  const { email, password, nickname, funFact } = req.body;
   bcrypt.hash(password, 10, async (err, hash) => {
     const reader = await Readers.create({
       email: email,
       password: hash,
-      firstName: firstName,
-      lastName: lastName,
+      nickname: nickname,
       funFact: funFact,
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -52,6 +86,7 @@ router.post("/create_reader", (req, res) => {
   });
 });
 
+// UPDATE
 router.post("/updateReader", authenticate, async (req, res) => {
   const userId = req.session.user.id;
   const { email, nickname, funFact } = req.body;
@@ -104,46 +139,7 @@ router.post("/updatePassword", authenticate, async (req, res) => {
   res.redirect("/reader/updateSucess");
 });
 
-router.get("/account", (req, res) => {
-  res.render("pages/readerAccount");
-});
-
-router.get("/updateSucess", authenticate, (req, res) => {
-  res.render("pages/updateSuccessful", {
-    user: {
-      email: req.session.user.email,
-      nickname: req.session.user.nickname,
-      funFact: req.session.user.funFact,
-      id: req.session.user.id,
-    },
-  });
-});
-
-router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  const reader = await Readers.findOne({
-    where: {
-      email: email,
-    },
-  });
-  if (!reader) {
-    res.status(400).render("pages/loginError");
-  } else {
-    bcrypt.compare(password, reader.password, (err, result) => {
-      if (err) {
-        res.send(err);
-        return;
-      }
-      if (!result) {
-        res.render("pages/loginError");
-      } else {
-        req.session.user = reader.dataValues;
-        res.redirect("/reader/dash");
-      }
-    });
-  }
-});
-
+// DESTROY
 router.post("/deleteReader", authenticate, async (req, res) => {
   const { password } = req.body;
   const reader = await Readers.findOne({
@@ -169,6 +165,11 @@ router.post("/deleteReader", authenticate, async (req, res) => {
   res.render("pages/userDeleted");
 });
 
+// PAGES
+router.get("/account", (req, res) => {
+  res.render("pages/readerAccount");
+});
+
 router.get("/dash", authenticate, (req, res) => {
   res.render("pages/readerDash");
 });
@@ -181,12 +182,15 @@ router.get("/loggedOut", (req, res) => {
   res.render("pages/loggedOut");
 });
 
-router.post("/logout", authenticate, (req, res) => {
-  if (req.session) {
-    req.session.destroy((err) => {
-      res.redirect("/reader/loggedOut");
-    });
-  }
+router.get("/updateSucess", authenticate, (req, res) => {
+  res.render("pages/updateSuccessful", {
+    user: {
+      email: req.session.user.email,
+      nickname: req.session.user.nickname,
+      funFact: req.session.user.funFact,
+      id: req.session.user.id,
+    },
+  });
 });
 
 module.exports = router;

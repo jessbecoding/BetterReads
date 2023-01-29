@@ -1,22 +1,31 @@
 <nav class="h-13">
-	<h1 class="text-3xl p-3 text-mainPurple font-dm font-bold">
-		<a href="/">BetterReads</a>
-	</h1>
-	<div class="menu-wrap">
-		<input type="checkbox" class="toggler" />
-		<div class="hamburger"><div></div></div>
-		<div class="menu">
-			<div>
-				<div>
-					<ul>
-						<li><a href="/about">About</a></li>
-						<li><a href="">Contact</a></li>
-						<li><a href="/reader/dash">My Dashboard</a></li>
-						<li><a href="/reader/account">My Account</a></li>
-						<li><a href="">Logout</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+  <h1 class="text-3xl p-3 text-mainPurple font-dm font-bold">
+    <a href="/">BetterReads</a>
+  </h1>
+  <div class="menu-wrap">
+    <input type="checkbox" class="toggler" />
+    <div class="hamburger"><div></div></div>
+    <div class="menu">
+      <div>
+        <div>
+          <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/reader/dash">My Dashboard</a></li>
+            <li><a href="/reader/account">My Account</a></li>
+            <li>
+              <form action="/reader/logout" method="post">
+                <input
+                  type="submit"
+                  name="submit"
+                  value="Logout"
+                  class="font-dm cursor-pointer"
+                />
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
