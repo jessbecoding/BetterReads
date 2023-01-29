@@ -21,10 +21,10 @@ module.exports = (sequelize, DataTypes) => {
   Events.init(
     {
       eventTitle: DataTypes.STRING,
-      date: DataTypes.DATE,
+      date: DataTypes.STRING,
       location: DataTypes.STRING,
       time: DataTypes.STRING,
-      isFree: DataTypes.BOOLEAN,
+      isFree: DataTypes.STRING,
       description: DataTypes.STRING,
       authorId: DataTypes.INTEGER,
     },
