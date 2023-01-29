@@ -144,6 +144,31 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.post("/deleteReader", authenticate, async (req, res) => {
+  const { password } = req.body;
+  const reader = await Readers.findOne({
+    where: {
+      id: req.session.user.id,
+    },
+  });
+  bcrypt.compare(password, reader.password, async (err, result) => {
+    if (err) {
+      res.send(err);
+      return;
+    }
+    if (!result) {
+      res.render("pages/loginError");
+    } else {
+      const delReader = await Readers.destroy({
+        where: {
+          id: req.session.user.id,
+        },
+      });
+    }
+  });
+  res.render("/pages/userDeleted");
+});
+
 router.get("/dash", authenticate, (req, res) => {
   res.render("pages/readerDash");
 });
