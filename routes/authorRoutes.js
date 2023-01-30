@@ -278,6 +278,8 @@ router.post("/updateEvent/:id", authenticate, async (req, res) => {
       time: time,
       isFree: isFree,
       location: location,
+      time: time,
+      isFree: isFree,
       description: description,
       updatedAt: new Date(),
     },
@@ -293,7 +295,7 @@ router.post("/updateEvent/:id", authenticate, async (req, res) => {
     },
   });
   res.render("pages/authorEvents", {
-    user: { firstName: req.session.user.firstName },
+    author: { firstName: req.session.user.firstName },
     authorEvents: authorEvents,
   });
 });

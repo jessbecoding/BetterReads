@@ -92,7 +92,7 @@ router.post("/create_reader", (req, res) => {
 router.get("/events", authenticate, async (req, res) => {
   const readerEvents = await Events.findAll();
   res.render("pages/readerEvents", {
-    user: { nickname: req.session.user.nickname },
+    reader: { nickname: req.session.user.nickname },
     readerEvents: readerEvents,
   });
 });
@@ -100,7 +100,7 @@ router.get("/events", authenticate, async (req, res) => {
 router.get("/books", authenticate, async (req, res) => {
   const readerBooks = await Books.findAll();
   res.render("pages/readerBooks", {
-    user: { nickname: req.session.user.nickname },
+    reader: { nickname: req.session.user.nickname },
     readerBooks: readerBooks,
   });
 });
@@ -186,12 +186,19 @@ router.post("/deleteReader", authenticate, async (req, res) => {
 
 // PAGES
 router.get("/account", (req, res) => {
-  res.render("pages/readerAccount");
+  res.render("pages/readerAccount", {
+    reader: {
+      email: req.session.user.email,
+      nickname: req.session.user.nickname,
+      funFact: req.session.user.funFact,
+      id: req.session.user.id,
+    },
+  });
 });
 
 router.get("/dash", authenticate, (req, res) => {
   res.render("pages/readerDash", {
-    user: {
+    reader: {
       email: req.session.user.email,
       nickname: req.session.user.nickname,
       funFact: req.session.user.funFact,
