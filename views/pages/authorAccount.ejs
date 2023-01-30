@@ -180,11 +180,19 @@
 									class="h-10 rounded-full text-lg text-center" />
 							</div>
 							<!------- INPUT SUBMIT ------->
+							<% if (user.id == 12) { %>
 							<input
 								type="submit"
 								name="submit"
-								value="DELETE ACCOUNT"
-								class="block text-lg bg-textPurple text-backgroundPurple w-48 rounded-full cursor-pointer font-quick mt-3 font-bold" />
+								value="Delete Account"
+								class="block text-lg bg-textPurple text-backgroundPurple w-48 rounded-full cursor-pointer font-quick md:mt-5 hidden" />
+							<% } else { %>
+							<input
+								type="submit"
+								name="submit"
+								value="Delete Account"
+								class="block text-lg bg-textPurple text-backgroundPurple w-48 rounded-full cursor-pointer font-quick md:mt-5" />
+							<% } %>
 						</form>
 					</div>
 				</div>
