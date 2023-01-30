@@ -1,5 +1,7 @@
 # BetterReads
 
+![View of BetterReads on Desktop](/public/assets/desktopLandingPage.png)
+
 ## About
 
 BetterReads is an app where authors can reach their readers by hosting events. It was created by Jayelon Lasseigne and myself, Jessika Adams, for our Backend Project at DigitalCrafts Fullstack Web Dev course. Jaye set up the frontend, I set up the backend. We met in the middle and made our logic work together.
@@ -36,7 +38,9 @@ The session is created during the login and stored in the database. The logout r
 
 ## Styling
 
-### Colors Used:
+### Colors
+
+![Colors used on BetterReads](/public/assets/colorsUsed.png)
 
 | Hex Code | Used For          |
 | -------- | ----------------- |
@@ -50,11 +54,25 @@ I spent the whole first day of this project laying out what I wanted BetterReads
 
 I chose purple because, based on the articles I read on color psychology, purple creates feelings of ‘luxury’, but also ‘curiosity’ and ‘mystery.’ I thought that was a good thing since our website is about discovering new authors and their books!
 
-### Typefaces Used:
+### Typefaces
+
+![Typefaces used on BetterReads](/public/assets/typefacesUsed.png)
 
 | Name and Link to Google Fonts                                                                      | Used For  |
 | -------------------------------------------------------------------------------------------------- | --------- |
 | [DM Serif Text](https://fonts.google.com/specimen/DM+Serif+Text?query=dm+ser&noto.query=Quicksand) | Headers   |
 | [Quicksand](https://fonts.google.com/specimen/Quicksand?query=quick&noto.query=Quicksand)          | Body Text |
 
-I also picked these fonts out the first day! I decided on a serif font for the headers because
+I also picked these out on the first day! I decided on a serif typeface for the headers because they remind me of old books. I scrolled through Google Fonts and 'DM Serif Text' caught my eye! I chose 'Quicksand' in a similar fashion. I wanted a sans-serif typeface for the body text because it creates a nice contrast with the serif for the headers.
+
+### Icons
+
+All icons are from [Google Icons](https://fonts.google.com/icons). I usually use Font Awesome, but I'm not using Bootstrap and EJS doesn't like external JS scripts. Plus I was already using typefaces from Google so it was easier to just paste what I needed to in the head of the document!
+
+### CSS Framework
+
+For this project, I decided to give [Tailwind CSS](https://tailwindcss.com/) a go. I usually don't use a framework and just code all the css myself, but my cohort mates have been really talking up Tailwind. And for good reason! I almost gave up on it after struggling through parts of the install and then having trouble running the 'watch' function in the package.json file while the server was running, but I'm glad I stuck it out! Once I learned the basic syntax for things like width, height, and text size, I was able to fly through page layouts. It was also very easy to make BetterReads mobile responsive using Tailwind, which is a part of CSS I find very tedious if you're coding everything from scratch.
+
+### Figma
+
+I also tested out [Figma](https://www.figma.com/files/recent?fuid=1195201387830074704) for this project! I decided to use it to make a mockup of the landing page for mobile and quickly became obsessed. All of the banner images, the bookshelf, and the bookmark were created on Figma.
