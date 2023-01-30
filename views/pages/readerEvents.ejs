@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BetterReads | Reader Events</title>
-    <%- include('../partials/head'); %>
-  </head>
-  <body>
-    <%- include('../partials/readerNav'); %>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BetterReads | Browse Events</title>
+		<%- include('../partials/head'); %>
+	</head>
+	<body>
+		<%- include('../partials/readerNav'); %>
 
-    <main class="flex grow flex-col px-3 mt-3 gap-3">
-      <h1 class="text-2xl font-dm">My Events</h1>
-      <!------- CHECK LENGTH OF EVENTS ------->
-      <% if (readerEvents.length == 0) { %>
-      <p class="text-center pt-3">It looks like you don't have any events!</p>
-      <% } %>
-	  <div class="grid gap-3 mt-3 md:grid-cols-3 md:w-full md:gap-5 lg:grid-cols-5">
-		<% readerEvents.forEach((event) => { %>
-			<div class="border-b-4 md:border-[#7e49ba] md:border-4 md:p-3 md:rounded-xl">
-				<h1 class="text-xl font-dm mb-3"><%= event.eventTitle %></h1>
-				<p><span class="font-bold">Date:</span> <%= event.date %></p>
-				<p><span class="font-bold">Time:</span> <%= event.time %></p>
-				<p><span class="font-bold">Location:</span> <%= event.location %></p>
-				<p><span class="font-bold">Free:</span> <%= event.isFree %></p>
-				<p><span class="font-bold">Description:</span> <%= event.description %></p>
-		<% }) %>
-	</div>
-    </main>
-    <%- include('../partials/readerFooter'); %>
-  </body>
+		<main class="flex grow flex-col px-3 gap-3">
+			<h1 class="text-3xl font-dm text-center">Browse Events</h1>
+
+			<div
+				class="grid gap-3 mt-3 md:grid-cols-3 md:w-full md:gap-5 lg:grid-cols-5">
+				<% readerEvents.forEach((event) => { %>
+				<div
+					class="border-b-4 border-[#7e49ba] md:border-4 md:p-3 md:rounded-xl">
+					<h1 class="text-xl font-dm mb-3"><%= event.eventTitle %></h1>
+					<p><span class="font-bold">Date:</span> <%= event.date %></p>
+					<p><span class="font-bold">Time:</span> <%= event.time %></p>
+					<p><span class="font-bold">Location:</span> <%= event.location %></p>
+					<p><span class="font-bold">Cost:</span> <%= event.isFree %></p>
+					<p class="mb-3">
+						<span class="font-bold">Description:</span> <%= event.description %>
+					</p>
+				</div>
+				<% }) %>
+			</div>
+		</main>
+		<%- include('../partials/readerFooter'); %>
+	</body>
 </html>

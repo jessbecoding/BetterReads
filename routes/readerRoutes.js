@@ -84,7 +84,8 @@ router.post("/create_reader", (req, res) => {
       createdAt: new Date(),
       updatedAt: new Date(),
     });
-    res.render("pages/readerDash", { reader: reader });
+    req.session.user = author.dataValues;
+    res.render("pages/readerDash", { user: req.session.user });
   });
 });
 
@@ -216,7 +217,7 @@ router.get("/loggedOut", (req, res) => {
 });
 
 router.get("/updateSucess", authenticate, (req, res) => {
-  res.render("pages/updateSuccessful", {
+  res.render("pages/updateSuccessfulReader", {
     user: {
       email: req.session.user.email,
       nickname: req.session.user.nickname,
