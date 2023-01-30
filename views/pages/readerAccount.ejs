@@ -1,177 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BetterReads | <%= user.nickname %>'s Account</title>
-    <%- include('../partials/head'); %>
-  </head>
-  <body>
-    <%- include('../partials/readerNav'); %>
-    <main class="flex flex-col grow lg:items-center">
-      <!------------ ACCOUNT INFORMATION ------------>
-      <h1 class="text-3xl p-3 text-center font-dm">My Account</h1>
-      <div class="md:flex md:justify-between md:w-full lg:w-3/4">
-        <div>
-          <div class="flex flex-col mb-5 px-3 gap-1">
-            <p class="md:text-lg">
-              <span class="font-bold pr-3">Email:</span> <%= reader.email %>
-            </p>
-            <p class="md:text-lg">
-              <span class="font-bold pr-3">Nickname:</span> <%= reader.nickname
-              %>
-            </p>
-            <p class="md:text-lg">
-              <span class="font-bold pr-3">Fun Fact:</span> <%= user.funFact %>
-            </p>
-          </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>BetterReads | <%= reader.nickname %>'s Account</title>
+		<%- include('../partials/head'); %>
+	</head>
+	<body>
+		<%- include('../partials/readerNav'); %>
+		<main class="flex flex-col grow lg:items-center">
+			<!------------ ACCOUNT INFORMATION ------------>
+			<h1 class="text-3xl p-3 text-center font-dm">My Account</h1>
+			<div class="md:flex md:justify-between md:w-full lg:w-3/4">
+				<div>
+					<div class="flex flex-col mb-5 px-3 gap-1">
+						<p class="md:text-lg">
+							<span class="font-bold pr-3">Email:</span> <%= reader.email %>
+						</p>
+						<p class="md:text-lg">
+							<span class="font-bold pr-3">Nickname:</span> <%= reader.nickname
+							%>
+						</p>
+						<p class="md:text-lg">
+							<span class="font-bold pr-3">Fun Fact:</span> <%= reader.funFact
+							%>
+						</p>
+					</div>
 
-          <!------------UPDATE ACCOUNT INFORMATION------------>
+					<!------------UPDATE ACCOUNT INFORMATION------------>
 
-          <h2 class="text-2xl p-3">Update my account</h2>
-          <div class="flex flex-col w-full gap-5">
-            <form
-              action="/reader/updateReader"
-              method="post"
-              id="updateReader"
-              class="flex flex-col gap-3 px-3 mb-5 md:w-[400px]"
-            >
-              <div class="flex justify-between items-center">
-                <label for="readerEmail" class="font-bold pr-3 md:text-lg"
-                  >New Email:
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="readerEmail"
-                  value="<%= user.email %>"
-                  class="h-10 text-center rounded-full text-lg"
-                />
-              </div>
-              <!------- NEW NICKNAME ------->
-              <div class="flex justify-between items-center">
-                <label for="readerFirst" class="font-bold pr-3 md:text-lg"
-                  >New Nickname:
-                </label>
-                <input
-                  type="text"
-                  name="nickname"
-                  id="readerFirst"
-                  value="<%= user.nickname %>"
-                  class="h-10 text-center rounded-full text-lg"
-                />
-              </div>
-              <!------- NEW FUN FACT ------->
-              <div class="flex justify-between items-center">
-                <label for="readerFact" class="font-bold pr-3 md:text-lg"
-                  >New Fun Fact:
-                </label>
-                <textarea
-                  name="funFact"
-                  id="readerFact"
-                  cols="20"
-                  rows="5"
-                  class="text-center rounded-lg w-[200px]"
-                >
-<%= user.funFact %></textarea
-                >
-              </div>
-              <!------- INPUT SUBMIT ------->
-              <input
-                type="submit"
-                name="submit"
-                value="Update Account"
-                class="block text-lg bg-textPurple text-backgroundPurple w-40 rounded-full cursor-pointer font-quick md:mt-5"
-              />
-            </form>
-          </div>
+					<h2 class="text-2xl p-3">Update my account</h2>
+					<div class="flex flex-col w-full gap-5">
+						<form
+							action="/reader/updateReader"
+							method="post"
+							id="updateReader"
+							class="flex flex-col gap-3 px-3 mb-5 md:w-[400px]">
+							<div class="flex justify-between items-center">
+								<label for="readerEmail" class="font-bold pr-3 md:text-lg"
+									>New Email:
+								</label>
+								<input
+									type="email"
+									name="email"
+									id="readerEmail"
+									value="<%= reader.email %>"
+									class="h-10 text-center rounded-full text-lg" />
+							</div>
+							<!------- NEW NICKNAME ------->
+							<div class="flex justify-between items-center">
+								<label for="readerFirst" class="font-bold pr-3 md:text-lg"
+									>New Nickname:
+								</label>
+								<input
+									type="text"
+									name="nickname"
+									id="readerFirst"
+									value="<%= reader.nickname %>"
+									class="h-10 text-center rounded-full text-lg" />
+							</div>
+							<!------- NEW FUN FACT ------->
+							<div class="flex justify-between items-center">
+								<label for="readerFact" class="font-bold pr-3 md:text-lg"
+									>New Fun Fact:
+								</label>
+								<textarea
+									name="funFact"
+									id="readerFact"
+									cols="20"
+									rows="5"
+									class="text-center rounded-lg w-[200px]">
+<%= reader.funFact %></textarea
+								>
+							</div>
+							<!------- INPUT SUBMIT ------->
+							<input
+								type="submit"
+								name="submit"
+								value="Update Account"
+								class="block text-lg bg-textPurple text-backgroundPurple w-40 rounded-full cursor-pointer font-quick md:mt-5" />
+						</form>
+					</div>
 
-          <!------------ UPDATE PASSWORD ------------>
+					<!------------ UPDATE PASSWORD ------------>
 
-          <h2 class="text-2xl p-3">Update my password</h2>
-          <div class="flex flex-col w-full gap-5">
-            <form
-              action="/reader/updatePassword"
-              method="post"
-              class="flex flex-col gap-3 px-3 mb-5 md:w-[400px]"
-            >
-              <div class="flex justify-between items-center">
-                <!------- CURRENT PASSWORD ------->
-                <label for="readerOldPassword" class="font-bold pr-3 md:text-lg"
-                  >Current Password:</label
-                >
-                <input
-                  type="password"
-                  name="password"
-                  id="readerOldPassword"
-                  class="h-10 rounded-full text-lg text-center"
-                />
-              </div>
-              <!------- NEW PASSWORD ------->
-              <div class="flex justify-between items-center">
-                <label for="readerNewPassword" class="font-bold pr-3 md:text-lg"
-                  >New Password:</label
-                >
-                <input
-                  type="password"
-                  name="newPassword"
-                  id="readerNewPassword"
-                  class="h-10 rounded-full text-lg text-center"
-                />
-              </div>
-              <!------- INPUT SUBMIT ------->
-              <input
-                type="submit"
-                name="submit"
-                value="Update Password"
-                class="block text-lg bg-textPurple text-backgroundPurple w-48 rounded-full cursor-pointer font-quick md:mt-5"
-              />
-            </form>
-          </div>
+					<h2 class="text-2xl p-3">Update my password</h2>
+					<div class="flex flex-col w-full gap-5">
+						<form
+							action="/reader/updatePassword"
+							method="post"
+							class="flex flex-col gap-3 px-3 mb-5 md:w-[400px]">
+							<div class="flex justify-between items-center">
+								<!------- CURRENT PASSWORD ------->
+								<label for="readerOldPassword" class="font-bold pr-3 md:text-lg"
+									>Current Password:</label
+								>
+								<input
+									type="password"
+									name="password"
+									id="readerOldPassword"
+									class="h-10 rounded-full text-lg text-center" />
+							</div>
+							<!------- NEW PASSWORD ------->
+							<div class="flex justify-between items-center">
+								<label for="readerNewPassword" class="font-bold pr-3 md:text-lg"
+									>New Password:</label
+								>
+								<input
+									type="password"
+									name="newPassword"
+									id="readerNewPassword"
+									class="h-10 rounded-full text-lg text-center" />
+							</div>
+							<!------- INPUT SUBMIT ------->
+							<input
+								type="submit"
+								name="submit"
+								value="Update Password"
+								class="block text-lg bg-textPurple text-backgroundPurple w-48 rounded-full cursor-pointer font-quick md:mt-5" />
+						</form>
+					</div>
 
-          <!------------ DELETE ACCOUNT ------------>
+					<!------------ DELETE ACCOUNT ------------>
 
-          <div class="p-3">
-            <div class="flex items-center text-2xl">
-              <span class="material-symbols-outlined"> warning </span>
-              <h2 class="text-2xl p-3 font-bold">DANGER ZONE</h2>
-              <span class="material-symbols-outlined"> warning </span>
-            </div>
-            <p>To delete your account, please type your password below.</p>
-            <p class="font-bold">YOU CANNOT UNDO THIS ACTION!</p>
-            <form
-              action="/reader/deleteReader"
-              method="post"
-              class="my-3 md:w-[400px]"
-            >
-              <!------- INPUT PASSWORD ------->
-              <div class="flex justify-between items-center">
-                <label for="readerDelPassword" class="font-bold pr-3 md:text-lg"
-                  >Password:</label
-                >
-                <input
-                  type="password"
-                  name="password"
-                  id="readerDelPassword"
-                  class="h-10 rounded-full text-lg text-center"
-                />
-              </div>
-              <!------- INPUT SUBMIT ------->
-              <input
-                type="submit"
-                name="submit"
-                value="DELETE ACCOUNT"
-                class="block text-lg bg-textPurple text-backgroundPurple w-48 rounded-full cursor-pointer font-quick mt-3 font-bold"
-              />
-            </form>
-          </div>
-        </div>
-        <div class="hidden md:block md:mr-6">
-          <img src="/assets/bookmark.png" alt="bookmark" />
-        </div>
-      </div>
-    </main>
-    <%- include('../partials/readerFooter'); %>
-  </body>
+					<div class="p-3">
+						<div class="flex items-center text-2xl">
+							<span class="material-symbols-outlined"> warning </span>
+							<h2 class="text-2xl p-3 font-bold">DANGER ZONE</h2>
+							<span class="material-symbols-outlined"> warning </span>
+						</div>
+						<p>To delete your account, please type your password below.</p>
+						<p class="font-bold">YOU CANNOT UNDO THIS ACTION!</p>
+						<form
+							action="/reader/deleteReader"
+							method="post"
+							class="my-3 md:w-[400px]">
+							<!------- INPUT PASSWORD ------->
+							<div class="flex justify-between items-center">
+								<label for="readerDelPassword" class="font-bold pr-3 md:text-lg"
+									>Password:</label
+								>
+								<input
+									type="password"
+									name="password"
+									id="readerDelPassword"
+									class="h-10 rounded-full text-lg text-center" />
+							</div>
+							<!------- INPUT SUBMIT ------->
+							<input
+								type="submit"
+								name="submit"
+								value="DELETE ACCOUNT"
+								class="block text-lg bg-textPurple text-backgroundPurple w-48 rounded-full cursor-pointer font-quick mt-3 font-bold" />
+						</form>
+					</div>
+				</div>
+				<div class="hidden md:block md:mr-6">
+					<img src="/assets/bookmark.png" alt="bookmark" />
+				</div>
+			</div>
+		</main>
+		<%- include('../partials/readerFooter'); %>
+	</body>
 </html>
