@@ -1401,8 +1401,8 @@ body {
 }
 
 @media (min-width: 976px) {
-  .lg\:w-1\/2 {
-    width: 50%;
+  .lg\:w-2\/3 {
+    width: 66.666667%;
   }
 
   .lg\:w-\[370px\] {
@@ -1421,11 +1421,19 @@ body {
     width: 25%;
   }
 
+  .lg\:w-1\/2 {
+    width: 50%;
+  }
+
   .lg\:grid-cols-5 {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .lg\:items-center {
     align-items: center;
+  }
+
+  .lg\:gap-5 {
+    gap: 1.25rem;
   }
 }
