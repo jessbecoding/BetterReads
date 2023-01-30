@@ -675,10 +675,6 @@ video {
   width: 50%;
 }
 
-.w-36 {
-  width: 9rem;
-}
-
 .w-screen {
   width: 100vw;
 }
@@ -689,6 +685,10 @@ video {
 
 .w-5\/6 {
   width: 83.333333%;
+}
+
+.w-36 {
+  width: 9rem;
 }
 
 .grow {
@@ -1269,16 +1269,16 @@ body {
     width: 80%;
   }
 
-  .md\:w-48 {
-    width: 12rem;
-  }
-
   .md\:w-64 {
     width: 16rem;
   }
 
   .md\:w-3\/4 {
     width: 75%;
+  }
+
+  .md\:w-48 {
+    width: 12rem;
   }
 
   .md\:grid-cols-2 {
