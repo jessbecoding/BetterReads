@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BetterReads | <%= author.nickname %>'s Dashboard</title>
+    <title>BetterReads | <%= reader.nickname %>'s Dashboard</title>
     <%- include('../partials/head'); %>
   </head>
   <body>
     <%- include('../partials/readerNav'); %>
     <h1 class="text-3xl font-quick px-3 text-center">
-      <span class="font-dm">Welcome,</span> <%= author.nickname %>
+      <span class="font-dm">Welcome,</span> <%= reader.nickname %>
     </h1>
     <main class="flex grow mt-3 justify-center">
       <div class="flex w-full gap-3 px-3 items-center md:w-4/5 lg:w-1/2">
