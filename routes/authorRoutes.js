@@ -270,10 +270,13 @@ router.get("/updateEvent/:id", authenticate, async (req, res) => {
 });
 
 router.post("/updateEvent/:id", authenticate, async (req, res) => {
-  const { eventTitle, time, isFree, location, description } = req.body;
+  const { eventTitle, date, time, isFree, location, description } = req.body;
   await Events.update(
     {
       eventTitle: eventTitle,
+      date: date,
+      time: time,
+      isFree: isFree,
       location: location,
       time: time,
       isFree: isFree,
