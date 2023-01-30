@@ -8,6 +8,7 @@ const { Authors } = require("../sequelize/models");
 const { Events } = require("../sequelize/models");
 const { Books } = require("../sequelize/models");
 const models = require("../sequelize/models");
+const { time } = require("console");
 
 // MIDDLE WARE
 router.use(
@@ -269,11 +270,13 @@ router.get("/updateEvent/:id", authenticate, async (req, res) => {
 });
 
 router.post("/updateEvent/:id", authenticate, async (req, res) => {
-  const { eventTitle, location, description } = req.body;
+  const { eventTitle, time, isFree, location, description } = req.body;
   await Events.update(
     {
       eventTitle: eventTitle,
       location: location,
+      time: time,
+      isFree: isFree,
       description: description,
       updatedAt: new Date(),
     },
@@ -289,7 +292,7 @@ router.post("/updateEvent/:id", authenticate, async (req, res) => {
     },
   });
   res.render("pages/authorEvents", {
-    user: { firstName: req.session.user.firstName },
+    author: { firstName: req.session.user.firstName },
     authorEvents: authorEvents,
   });
 });
