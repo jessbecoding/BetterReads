@@ -76,3 +76,9 @@ For this project, I decided to give [Tailwind CSS](https://tailwindcss.com/) a g
 ### Figma
 
 I also tested out [Figma](https://www.figma.com/files/recent?fuid=1195201387830074704) for this project! I decided to use it to make a mockup of the landing page for mobile and quickly became obsessed. All of the banner images, the bookshelf, and the bookmark were created on Figma.
+
+### Resources
+
+[Hamburger Menu](https://www.youtube.com/watch?v=DZg6UfS5zYg)
+
+- This menu by Traversy Media only uses CSS, and it was perfect for our site!
